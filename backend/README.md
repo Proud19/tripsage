@@ -6,3 +6,4 @@
 
 - `pnpm install prisma --save-dev` to install prisma
 - `prisma generate` after changing the schema.prisma file
+- `npx prisma generate` after changing the db
