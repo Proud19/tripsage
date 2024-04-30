@@ -6,5 +6,7 @@
 
 - `pnpm install prisma --save-dev` to install prisma
 - `prisma generate` after changing the schema.prisma file
+
 - `pnpm dlx prisma generate` after changing the db
-- `npx prisma db push` to force push the db to the prisma files
+- `prisma db push` to push changes to the db
+- `prisma db push --force-reset` to force push changes (will delete all data in the db)
