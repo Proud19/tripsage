@@ -5,3 +5,4 @@
 - `nest generate resource <resource-name>` to generate a new resource
 
 - `prisma generate` after changing the schema.prisma file
+- `npx prisma generate` after changing the db
