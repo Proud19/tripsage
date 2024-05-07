@@ -1,1 +1,3 @@
-Team 9
+### Team 9
+
+## Product Name: TripSage
