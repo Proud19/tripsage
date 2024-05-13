@@ -10,6 +10,7 @@ import SwiftUI
 struct ExploreView: View {
     // navigation stack to nav to another view
     var body: some View {
+        // Text("Explore")
         NavigationStack {
             ScrollView {
                 LazyVStack{

@@ -35,8 +35,17 @@ struct LandmarksView: View {
                     // distance away
                     Text("1 mile away")
                 }
-                // city / town name
-                Text("Stanford, CA").foregroundStyle(.gray)
+                // second line
+                HStack {
+                    // city / town name
+                    Text("Stanford, CA").foregroundStyle(.gray)
+                    
+                    // like button
+                    Spacer()
+                    HeartButton()
+                }
+                
+                
                 // other details
                 Spacer()
                 Text("Stanford Memorial Church is located on the Main Quad at the center of the Stanford University campus in Stanford, California, United States. It was built during the American Renaissance by Jane Stanford as a memorial to her husband Leland.")
