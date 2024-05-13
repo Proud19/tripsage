@@ -37,9 +37,9 @@ struct SageTabView: View {
     var body: some View {
         NavigationStack {
             TabView {
-                ActivityView()
-                    .tabItem { Label("Explore", systemImage: "magnifyingglass.circle") }
                 ExploreView()
+                    .tabItem { Label("Explore", systemImage: "magnifyingglass.circle") }
+                ActivityView()
                     .tabItem { Label("Activity", systemImage: "play") }
                 AccountView()
                     .tabItem { Label("Account", systemImage: "person.crop.circle") }
