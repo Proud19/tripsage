@@ -11,7 +11,7 @@ import SwiftUI
 struct tripsageApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainEntryView()
         }
     }
 }
