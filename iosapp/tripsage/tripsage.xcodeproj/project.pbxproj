@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB7F98982BF1B16D0055A9D8 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7F98972BF1B16D0055A9D8 /* HeartButton.swift */; };
+		BBFD8C5D2BF183230076568D /* LandmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFD8C5C2BF183230076568D /* LandmarksView.swift */; };
 		FF82EAF12BEADD4300738DF8 /* tripsageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF82EAF02BEADD4300738DF8 /* tripsageApp.swift */; };
 		FF82EAF32BEADD4300738DF8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF82EAF22BEADD4300738DF8 /* ContentView.swift */; };
 		FF82EAF52BEADD4600738DF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF82EAF42BEADD4600738DF8 /* Assets.xcassets */; };
@@ -18,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB0AACB72BF17FD00043BC5A /* exp-2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "exp-2.jpeg"; sourceTree = "<group>"; };
+		BB7F98972BF1B16D0055A9D8 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
+		BBFD8C5C2BF183230076568D /* LandmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksView.swift; sourceTree = "<group>"; };
 		FF82EAED2BEADD4300738DF8 /* tripsage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tripsage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF82EAF02BEADD4300738DF8 /* tripsageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tripsageApp.swift; sourceTree = "<group>"; };
 		FF82EAF22BEADD4300738DF8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,10 +66,10 @@
 			children = (
 				FF82EAF02BEADD4300738DF8 /* tripsageApp.swift */,
 				FF82EAF22BEADD4300738DF8 /* ContentView.swift */,
+				FFE0F6672BEB6D5500FD39D9 /* Account */,
 				FFE0F6682BEB6DD700FD39D9 /* SageTab */,
 				FFE0F6662BEB6CD300FD39D9 /* Activity */,
 				FFE0F6652BEB6CB400FD39D9 /* Explore */,
-				FFE0F6672BEB6D5500FD39D9 /* Account */,
 				FFE0F6642BEB6B4A00FD39D9 /* Login */,
 				FF82EAF42BEADD4600738DF8 /* Assets.xcassets */,
 				FF82EAF62BEADD4600738DF8 /* Preview Content */,
@@ -83,6 +88,7 @@
 		FFE0F6642BEB6B4A00FD39D9 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				BB0AACB72BF17FD00043BC5A /* exp-2.jpeg */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -91,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				FFE0F66D2BEB6F7B00FD39D9 /* ExploreView.swift */,
+				BB7F98972BF1B16D0055A9D8 /* HeartButton.swift */,
+				BBFD8C5C2BF183230076568D /* LandmarksView.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -193,8 +201,10 @@
 				FF82EAF32BEADD4300738DF8 /* ContentView.swift in Sources */,
 				FFE0F66C2BEB6F6C00FD39D9 /* ActivityView.swift in Sources */,
 				FFE0F66A2BEB6E1500FD39D9 /* SageTabView.swift in Sources */,
+				BB7F98982BF1B16D0055A9D8 /* HeartButton.swift in Sources */,
 				FF82EAF12BEADD4300738DF8 /* tripsageApp.swift in Sources */,
 				FFE0F66E2BEB6F7B00FD39D9 /* ExploreView.swift in Sources */,
+				BBFD8C5D2BF183230076568D /* LandmarksView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
