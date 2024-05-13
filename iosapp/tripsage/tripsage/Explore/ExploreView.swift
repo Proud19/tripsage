@@ -8,9 +8,24 @@
 import SwiftUI
 
 struct ExploreView: View {
+    // navigation stack to nav to another view
     var body: some View {
-        Text("Explre tab!")
+        NavigationStack {
+            ScrollView {
+                LazyVStack{
+                    ForEach(0 ... 5, id: \.self) { landmark in
+                        LandmarksView()
+                            .frame(height: 500)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        
+                    }
+                }
+            }
+        }
     }
+    
+    
+    
 }
 
 #Preview {
