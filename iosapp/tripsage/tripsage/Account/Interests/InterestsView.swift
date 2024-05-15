@@ -5,6 +5,8 @@
 //  Created by Proud Mpala on 5/15/24.
 //
 
+/* TODO: Need a wrapping hstack to prsent the interests! */
+
 import SwiftUI
 
 struct InterestsView: View {
@@ -13,7 +15,7 @@ struct InterestsView: View {
     @State private var interests3 = [ "Soccer", "rocks", "gymn"]
     
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 10) {
             Text("Interests")
                 .bold()
             RoundedRectangle(cornerRadius: 10)
@@ -52,11 +54,8 @@ struct InterestsView: View {
                             }
                         }
                         .padding(8)
-                        
-                        Spacer()
                     }
                 )
-            
         }
     }
 }

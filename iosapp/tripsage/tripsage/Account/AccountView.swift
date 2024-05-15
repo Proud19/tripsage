@@ -9,15 +9,13 @@ import SwiftUI
 
 struct AccountView: View {
     var body: some View {
-        VStack {
+        ScrollView {
             VStack {
                 InterestsView()
+                    .frame(height: 200)
                 HistoryView()
-                Spacer()
-            }.padding(10)
-            
-            Spacer()
-        }
+            }
+        }.padding(10)
     }
 }
 

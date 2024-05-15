@@ -10,10 +10,11 @@ import SwiftUI
 struct HistoryView: View {
     var historyViewModel = HistoryViewModel()
     var body: some View {
-        VStack {
+        VStack (spacing: 10) {
             Text("History")
                 .bold()
             HStack {
+                Spacer()
                 VStack {
                     Text(historyViewModel.numberOfPastTrips.description).font(.title).bold()
                     Text("Past Trips").font(.caption)
@@ -32,12 +33,15 @@ struct HistoryView: View {
                     }
                     Text("Travelled").font(.caption)
                 }.padding([.trailing], 10)
+                Spacer()
             }
             .background(.gray)
             .cornerRadius(12)
             .foregroundColor(.white)
             
+
         }
+        
     }
 }
 

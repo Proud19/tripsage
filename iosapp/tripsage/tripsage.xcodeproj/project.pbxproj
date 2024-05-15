@@ -136,8 +136,8 @@
 			children = (
 				FFE0F6842BF4994700FD39D9 /* History */,
 				FFE0F6832BF4993800FD39D9 /* Interests */,
-				FFE0F66F2BEB6F8A00FD39D9 /* AccountView.swift */,
 				FFE0F6812BF4990A00FD39D9 /* AccountViewModel .swift */,
+				FFE0F66F2BEB6F8A00FD39D9 /* AccountView.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";

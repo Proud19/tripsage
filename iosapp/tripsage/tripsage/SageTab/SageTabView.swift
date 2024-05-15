@@ -25,7 +25,6 @@ struct ColoredNavigationBar: ViewModifier {
         for: .navigationBar
       )
       .toolbarBackground(.visible, for: .navigationBar)
-      
   }
 }
 
@@ -33,8 +32,8 @@ struct SageTabView: View {
     
     init() {
         
-        // UITabBar.appearance().backgroundColor = UIColor(Color.red)
         UITabBar.appearance().backgroundColor = UIColor(Color.sage)
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
        
     }
     
@@ -51,6 +50,7 @@ struct SageTabView: View {
                 .navigationBarBackground(.sage)
                 .onAppear {
                     UITabBar.appearance().barTintColor = UIColor(Color.sage)
+                    UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.red]
                 }
         }
     }
