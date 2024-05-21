@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-  func navigationBarBackground(_ background: Color = .white) -> some View {
+  func navigationBarBackground(_ background: Color) -> some View {
     return self
       .modifier(ColoredNavigationBar(background: background))
   }
@@ -31,20 +31,27 @@ struct ColoredNavigationBar: ViewModifier {
 struct SageTabView: View {
     
     init() {
-        UITabBar.appearance().backgroundColor = UIColor.cyan
+        
+        UITabBar.appearance().backgroundColor = UIColor(Color.sage)
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+       
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             TabView {
                 ExploreView()
                     .tabItem { Label("Explore", systemImage: "magnifyingglass.circle") }
                 ActivityView()
-                    .tabItem { Label("Activity", systemImage: "play") }
+                    .tabItem { Label("Activity", systemImage: "record.circle") }
                 AccountView()
                     .tabItem { Label("Account", systemImage: "person.crop.circle") }
             }.navigationTitle("Trip Sage")
-                .navigationBarBackground(.blue)
+                .navigationBarBackground(.sage)
+                .onAppear {
+                    UITabBar.appearance().barTintColor = UIColor(Color.sage)
+                    UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.red]
+                }
         }
     }
 }

@@ -22,6 +22,10 @@
 		FFE0F67C2BF290D900FD39D9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0F67B2BF290D900FD39D9 /* LoginView.swift */; };
 		FFE0F67E2BF2934200FD39D9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0F67D2BF2934200FD39D9 /* LoginViewModel.swift */; };
 		FFE0F6802BF2975B00FD39D9 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0F67F2BF2975B00FD39D9 /* OnBoardingViewModel.swift */; };
+		FFE0F6822BF4990A00FD39D9 /* AccountViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0F6812BF4990A00FD39D9 /* AccountViewModel .swift */; };
+		FFE0F6862BF4999F00FD39D9 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0F6852BF4999F00FD39D9 /* HistoryView.swift */; };
+		FFE0F6882BF499B100FD39D9 /* InterestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0F6872BF499B100FD39D9 /* InterestsView.swift */; };
+		FFE0F68A2BF4A50B00FD39D9 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0F6892BF4A50B00FD39D9 /* HistoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +45,10 @@
 		FFE0F67B2BF290D900FD39D9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FFE0F67D2BF2934200FD39D9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FFE0F67F2BF2975B00FD39D9 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		FFE0F6812BF4990A00FD39D9 /* AccountViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountViewModel .swift"; sourceTree = "<group>"; };
+		FFE0F6852BF4999F00FD39D9 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		FFE0F6872BF499B100FD39D9 /* InterestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsView.swift; sourceTree = "<group>"; };
+		FFE0F6892BF4A50B00FD39D9 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +134,9 @@
 		FFE0F6672BEB6D5500FD39D9 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				FFE0F6842BF4994700FD39D9 /* History */,
+				FFE0F6832BF4993800FD39D9 /* Interests */,
+				FFE0F6812BF4990A00FD39D9 /* AccountViewModel .swift */,
 				FFE0F66F2BEB6F8A00FD39D9 /* AccountView.swift */,
 			);
 			path = Account;
@@ -162,6 +173,23 @@
 				FFE0F67F2BF2975B00FD39D9 /* OnBoardingViewModel.swift */,
 			);
 			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		FFE0F6832BF4993800FD39D9 /* Interests */ = {
+			isa = PBXGroup;
+			children = (
+				FFE0F6872BF499B100FD39D9 /* InterestsView.swift */,
+			);
+			path = Interests;
+			sourceTree = "<group>";
+		};
+		FFE0F6842BF4994700FD39D9 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				FFE0F6852BF4999F00FD39D9 /* HistoryView.swift */,
+				FFE0F6892BF4A50B00FD39D9 /* HistoryViewModel.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,13 +266,17 @@
 				FFE0F6802BF2975B00FD39D9 /* OnBoardingViewModel.swift in Sources */,
 				FF82EAF32BEADD4300738DF8 /* MainEntryView.swift in Sources */,
 				FFE0F66C2BEB6F6C00FD39D9 /* ActivityView.swift in Sources */,
+				FFE0F68A2BF4A50B00FD39D9 /* HistoryViewModel.swift in Sources */,
 				FFE0F67A2BF2909F00FD39D9 /* OnBoardingView.swift in Sources */,
 				FFE0F66A2BEB6E1500FD39D9 /* SageTabView.swift in Sources */,
 				BB7F98982BF1B16D0055A9D8 /* HeartButton.swift in Sources */,
+				FFE0F6862BF4999F00FD39D9 /* HistoryView.swift in Sources */,
 				FFE0F6752BF28D2800FD39D9 /* MainEntryViewModel.swift in Sources */,
 				FF82EAF12BEADD4300738DF8 /* tripsageApp.swift in Sources */,
+				FFE0F6882BF499B100FD39D9 /* InterestsView.swift in Sources */,
 				FFE0F67E2BF2934200FD39D9 /* LoginViewModel.swift in Sources */,
 				FFE0F67C2BF290D900FD39D9 /* LoginView.swift in Sources */,
+				FFE0F6822BF4990A00FD39D9 /* AccountViewModel .swift in Sources */,
 				FFE0F66E2BEB6F7B00FD39D9 /* ExploreView.swift in Sources */,
 				BBFD8C5D2BF183230076568D /* LandmarksView.swift in Sources */,
 			);
