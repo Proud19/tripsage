@@ -10,10 +10,14 @@ import Foundation
 
 class LoginViewModel {
     
-    func validateUser(username: String, password: String) -> Bool {
+    func validateUser(username: String, password: String, completion: @escaping (Bool) -> Void) {
+        // Simulate a network call with a delay
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
             // Perform user validation logic here...
-            // For demonstration purposes, let's assume valid user credentials are "admin" for both username and password
-            return true
+            let isValid = !username.isEmpty && !password.isEmpty
+            DispatchQueue.main.async {
+                completion(isValid)
+            }
+        }
     }
-    
 }

@@ -7,11 +7,19 @@
 
 import SwiftUI
 
+
+enum LoginPageState {
+    case normal
+    case invalidCredentials
+    case loading
+}
+
 struct LoginView: View {
     
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var loggedIn: Bool = false
+    @State private var pageState: LoginPageState = .normal
     
     var loginViewModel = LoginViewModel()
     
@@ -26,29 +34,49 @@ struct LoginView: View {
                 TextField("Username", text: $username)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
+                    .disabled(pageState == .loading)
                 
                 // Password text field
                 SecureField("Password", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
+                    .disabled(pageState == .loading)
+                
+                // Error message for invalid credentials
+                if pageState == .invalidCredentials {
+                    Text("Invalid username or password")
+                        .foregroundColor(.red)
+                        .padding()
+                }
                 
                 // Login button
                 Button(action: {
-                    // Perform login logic here...
-                    // For simplicity, just print the username and password
-                    if loginViewModel.validateUser(username: username, password: password) {
-                        loggedIn = true
-                    } else {
-                        // User is invalid, show error message or handle accordingly
-                        print("Invalid username or password")
+                    pageState = .loading
+                    loginViewModel.validateUser(username: username, password: password) { success in
+                        pageState = .normal
+                        if success {
+                            loggedIn = true
+                        } else {
+                            pageState = .invalidCredentials
+                        }
                     }
                 }) {
-                    Text("Login")
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+                    if pageState == .loading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .padding()
+                            .background(Color.sage)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    } else {
+                        Text("Login")
+                            .padding()
+                            .background(Color.sage)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
                 }
+                .disabled(pageState == .loading)
                 
                 // Additional actions like forgot password or signup
                 HStack {
@@ -58,7 +86,7 @@ struct LoginView: View {
                         print("Forgot password tapped")
                     }) {
                         Text("Forgot Password?")
-                            .foregroundColor(.blue)
+                            .foregroundColor(.sage)
                     }
                 }
                 .padding(.top, 10)
@@ -68,9 +96,8 @@ struct LoginView: View {
             }
             .padding()
             .background(
-                // User is valid, perform login action
                 NavigationLink(destination: OnBoardingView(), isActive: $loggedIn) {
-                        EmptyView()
+                    EmptyView()
                 }
             )
         }
