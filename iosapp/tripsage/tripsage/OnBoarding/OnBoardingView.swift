@@ -17,42 +17,62 @@ struct OnBoardingView: View {
     var body: some View {
         if onBoardingViewModel.userNeedOnBoarding {
             VStack {
-                Text("Select Your Interests")
+                Text("Add Your Interests")
                     .font(.title)
                     .padding()
 
-                TextField("Type your interest", text: $interestInput)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
+                HStack {
+                    TextField("Type your interest", text: $interestInput)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                        .onChange(of: interestInput) { newValue in
+                            if newValue.count > 50 {
+                                interestInput = String(newValue.prefix(50))
+                            }
+                        }
 
-                Button(action: {
-                    // Add the interest to the list
-                    selectedInterests.append(interestInput)
-                    // Clear the text field after adding
-                    interestInput = ""
-                }) {
-                    Text("Add")
-                        .padding(.horizontal)
-                        .padding(.vertical, 10)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(5)
+                    Button(action: {
+                        if !interestInput.isEmpty {
+                            selectedInterests.append(interestInput)
+                            interestInput = ""
+                        }
+                    }) {
+                        Image(systemName: "plus")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.sage)
+                            .cornerRadius(5)
+                    }
+                    .padding(.trailing)
                 }
                 .padding()
 
-                List(selectedInterests, id: \.self) { interest in
-                    Text(interest)
+                List {
+                    ForEach(selectedInterests, id: \.self) { interest in
+                        HStack {
+                            Text(interest)
+                            Spacer()
+                            Button(action: {
+                                if let index = selectedInterests.firstIndex(of: interest) {
+                                    selectedInterests.remove(at: index)
+                                }
+                            }) {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundColor(.red)
+                            }
+                        }
+                    }
+                    .padding(.vertical, 5)
                 }
                 .padding()
+                .listStyle(PlainListStyle())
 
-                Spacer()
-                
                 Button(action: {
                     isDoneAddingInterests = true
                 }) {
                     Text("Done")
                         .padding()
-                        .background(Color.blue)
+                        .background(Color.sage)
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
@@ -60,7 +80,7 @@ struct OnBoardingView: View {
             }
             .padding()
             .background(
-                NavigationLink(destination: SageTabView(), isActive: $isDoneAddingInterests) {
+                NavigationLink(destination: SageTabView().navigationBarBackButtonHidden(), isActive: $isDoneAddingInterests) {
                     EmptyView()
                 }
             )
