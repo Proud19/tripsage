@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+// Shake effect modifier
+struct ShakeEffect: GeometryEffect {
+    var amount: CGFloat = 10
+    var shakesPerUnit = 3
+    var animatableData: CGFloat
+
+    func effectValue(size: CGSize) -> ProjectionTransform {
+        ProjectionTransform(CGAffineTransform(translationX: amount * sin(animatableData * .pi * CGFloat(shakesPerUnit)), y: 0))
+    }
+}
 
 enum LoginPageState {
     case normal
@@ -15,11 +25,17 @@ enum LoginPageState {
 }
 
 struct LoginView: View {
-    
+
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var loggedIn: Bool = false
     @State private var pageState: LoginPageState = .normal
+    @State private var shakeEffectTrigger: CGFloat = 0
+    
+    private let sageIcon: UIImage = {
+        guard let image = Bundle.main.icon else { return UIImage() }
+        return image
+    }()
     
     var loginViewModel = LoginViewModel()
     
@@ -27,8 +43,13 @@ struct LoginView: View {
         NavigationView {
             VStack {
                 // Logo or title
-                Text("Welcome to TripSage")
-                    .font(.largeTitle)
+                VStack {
+                    Text("Login")
+                        .font(.title)
+                        .bold()
+                    Image(uiImage: sageIcon)
+                        .cornerRadius(5)
+                }
                 
                 // Username text field
                 TextField("Username", text: $username)
@@ -47,6 +68,12 @@ struct LoginView: View {
                     Text("Invalid username or password")
                         .foregroundColor(.red)
                         .padding()
+                        .modifier(ShakeEffect(animatableData: shakeEffectTrigger))
+                        .onAppear {
+                            withAnimation(.default) {
+                                shakeEffectTrigger += 1
+                            }
+                        }
                 }
                 
                 // Login button
