@@ -48,4 +48,3 @@ struct MessageView_Preview: PreviewProvider{
         MessageView(message: Message(userId: "123", text: "hello", PhotoURL: "", createdAt: Date(), isFromUser: false))
     }
 }
-

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		BB7F98982BF1B16D0055A9D8 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7F98972BF1B16D0055A9D8 /* HeartButton.swift */; };
 		BBFD8C5D2BF183230076568D /* LandmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFD8C5C2BF183230076568D /* LandmarksView.swift */; };
+		FF0C1A442C052293007710E0 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A432C052293007710E0 /* MessageView.swift */; };
+		FF0C1A462C0522BC007710E0 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A452C0522BC007710E0 /* MessageViewModel.swift */; };
 		FF82EAF12BEADD4300738DF8 /* tripsageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF82EAF02BEADD4300738DF8 /* tripsageApp.swift */; };
 		FF82EAF32BEADD4300738DF8 /* MainEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF82EAF22BEADD4300738DF8 /* MainEntryView.swift */; };
 		FF82EAF52BEADD4600738DF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF82EAF42BEADD4600738DF8 /* Assets.xcassets */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		BB7F98972BF1B16D0055A9D8 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
 		BBFD8C5C2BF183230076568D /* LandmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksView.swift; sourceTree = "<group>"; };
+		FF0C1A432C052293007710E0 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		FF0C1A452C0522BC007710E0 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		FF82EAED2BEADD4300738DF8 /* tripsage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tripsage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF82EAF02BEADD4300738DF8 /* tripsageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tripsageApp.swift; sourceTree = "<group>"; };
 		FF82EAF22BEADD4300738DF8 /* MainEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntryView.swift; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				FFE0F66B2BEB6F6C00FD39D9 /* ActivityView.swift */,
+				FF0C1A432C052293007710E0 /* MessageView.swift */,
+				FF0C1A452C0522BC007710E0 /* MessageViewModel.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -274,6 +280,8 @@
 				FFE0F6752BF28D2800FD39D9 /* MainEntryViewModel.swift in Sources */,
 				FF82EAF12BEADD4300738DF8 /* tripsageApp.swift in Sources */,
 				FFE0F6882BF499B100FD39D9 /* InterestsView.swift in Sources */,
+				FF0C1A442C052293007710E0 /* MessageView.swift in Sources */,
+				FF0C1A462C0522BC007710E0 /* MessageViewModel.swift in Sources */,
 				FFE0F67E2BF2934200FD39D9 /* LoginViewModel.swift in Sources */,
 				FFE0F67C2BF290D900FD39D9 /* LoginView.swift in Sources */,
 				FFE0F6822BF4990A00FD39D9 /* AccountViewModel .swift in Sources */,
