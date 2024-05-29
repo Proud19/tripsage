@@ -11,6 +11,9 @@
 		BBFD8C5D2BF183230076568D /* LandmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFD8C5C2BF183230076568D /* LandmarksView.swift */; };
 		FF0C1A442C052293007710E0 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A432C052293007710E0 /* MessageView.swift */; };
 		FF0C1A462C0522BC007710E0 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A452C0522BC007710E0 /* MessageViewModel.swift */; };
+		FF0C1A492C06CD70007710E0 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A482C06CD70007710E0 /* SignUpView.swift */; };
+		FF0C1A4B2C06CDF3007710E0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A4A2C06CDF3007710E0 /* SignUpViewModel.swift */; };
+		FF0C1A4D2C071B68007710E0 /* KeyChainUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A4C2C071B68007710E0 /* KeyChainUtility.swift */; };
 		FF82EAF12BEADD4300738DF8 /* tripsageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF82EAF02BEADD4300738DF8 /* tripsageApp.swift */; };
 		FF82EAF32BEADD4300738DF8 /* MainEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF82EAF22BEADD4300738DF8 /* MainEntryView.swift */; };
 		FF82EAF52BEADD4600738DF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF82EAF42BEADD4600738DF8 /* Assets.xcassets */; };
@@ -35,6 +38,9 @@
 		BBFD8C5C2BF183230076568D /* LandmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksView.swift; sourceTree = "<group>"; };
 		FF0C1A432C052293007710E0 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		FF0C1A452C0522BC007710E0 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		FF0C1A482C06CD70007710E0 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		FF0C1A4A2C06CDF3007710E0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		FF0C1A4C2C071B68007710E0 /* KeyChainUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainUtility.swift; sourceTree = "<group>"; };
 		FF82EAED2BEADD4300738DF8 /* tripsage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tripsage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF82EAF02BEADD4300738DF8 /* tripsageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tripsageApp.swift; sourceTree = "<group>"; };
 		FF82EAF22BEADD4300738DF8 /* MainEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntryView.swift; sourceTree = "<group>"; };
@@ -66,6 +72,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF0C1A472C06CD50007710E0 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				FF0C1A482C06CD70007710E0 /* SignUpView.swift */,
+				FF0C1A4A2C06CDF3007710E0 /* SignUpViewModel.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		FF82EAE42BEADD4300738DF8 = {
 			isa = PBXGroup;
 			children = (
@@ -85,9 +100,8 @@
 		FF82EAEF2BEADD4300738DF8 /* tripsage */ = {
 			isa = PBXGroup;
 			children = (
-				FFE0F6782BF2908700FD39D9 /* OnBoarding */,
-				FFE0F6762BF28F0C00FD39D9 /* SignIn */,
 				FF82EAF02BEADD4300738DF8 /* tripsageApp.swift */,
+				FFE0F6782BF2908700FD39D9 /* OnBoarding */,
 				FFE0F6732BF28D0C00FD39D9 /* MainEntry */,
 				FFE0F6672BEB6D5500FD39D9 /* Account */,
 				FFE0F6682BEB6DD700FD39D9 /* SageTab */,
@@ -111,6 +125,8 @@
 		FFE0F6642BEB6B4A00FD39D9 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				FF0C1A4C2C071B68007710E0 /* KeyChainUtility.swift */,
+				FF0C1A472C06CD50007710E0 /* SignUp */,
 				FFE0F67B2BF290D900FD39D9 /* LoginView.swift */,
 				FFE0F67D2BF2934200FD39D9 /* LoginViewModel.swift */,
 			);
@@ -163,13 +179,6 @@
 				FFE0F6742BF28D2800FD39D9 /* MainEntryViewModel.swift */,
 			);
 			path = MainEntry;
-			sourceTree = "<group>";
-		};
-		FFE0F6762BF28F0C00FD39D9 /* SignIn */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SignIn;
 			sourceTree = "<group>";
 		};
 		FFE0F6782BF2908700FD39D9 /* OnBoarding */ = {
@@ -281,9 +290,12 @@
 				FF82EAF12BEADD4300738DF8 /* tripsageApp.swift in Sources */,
 				FFE0F6882BF499B100FD39D9 /* InterestsView.swift in Sources */,
 				FF0C1A442C052293007710E0 /* MessageView.swift in Sources */,
+				FF0C1A4B2C06CDF3007710E0 /* SignUpViewModel.swift in Sources */,
 				FF0C1A462C0522BC007710E0 /* MessageViewModel.swift in Sources */,
+				FF0C1A492C06CD70007710E0 /* SignUpView.swift in Sources */,
 				FFE0F67E2BF2934200FD39D9 /* LoginViewModel.swift in Sources */,
 				FFE0F67C2BF290D900FD39D9 /* LoginView.swift in Sources */,
+				FF0C1A4D2C071B68007710E0 /* KeyChainUtility.swift in Sources */,
 				FFE0F6822BF4990A00FD39D9 /* AccountViewModel .swift in Sources */,
 				FFE0F66E2BEB6F7B00FD39D9 /* ExploreView.swift in Sources */,
 				BBFD8C5D2BF183230076568D /* LandmarksView.swift in Sources */,

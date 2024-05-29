@@ -1,20 +1,30 @@
-import Foundation
-import Security
+//
+//  SignUpViewModel.swift
+//  tripsage
+//
+//  Created by Proud Mpala on 5/28/24.
+//
 
-class LoginViewModel {
+import Foundation
+
+class SignUpViewModel {
     
-    func validateUser(username: String, password: String, completion: @escaping (Bool) -> Void) {
+    func registerUser(firstName: String, lastName: String, emailAddress: String, password: String, completion: @escaping (Bool) -> Void) {
         // Define the URL and the request
-        print("Starting to validate...")
-        let url = URL(string: "https://6062-171-66-12-150.ngrok-free.app/auth/login")!
+        guard let url = URL(string: "https://6062-171-66-12-150.ngrok-free.app/auth/register") else {
+            print("Invalid URL")
+            completion(false)
+            return
+        }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        print("About to send request...")
         
         // Define the JSON payload
         let parameters: [String: Any] = [
-            "emailAddress": username,
+            "firstName": firstName,
+            "lastName": lastName,
+            "emailAddress": emailAddress,
             "password": password
         ]
         
@@ -27,14 +37,9 @@ class LoginViewModel {
             return
         }
         
-        print("The request body is")
-        guard let body = request.httpBody else { return }
-        print(body)
-        
         // Create the data task
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             // Handle the response
-            print("Doing URL session...")
             if let error = error {
                 print("Error: \(error.localizedDescription)")
                 completion(false)
@@ -46,11 +51,9 @@ class LoginViewModel {
                 completion(false)
                 return
             }
-        
             print(httpResponse)
-            
             // Check the HTTP status code
-            if httpResponse.statusCode == 200 {
+            if httpResponse.statusCode == 201 {
                 if let responseData = data {
                     // Print the response body
                     print("Response Body: \(String(data: responseData, encoding: .utf8) ?? "Unable to parse body")")
@@ -80,6 +83,6 @@ class LoginViewModel {
             }
         }
         
-        task.resume() // Starts the network task
+        task.resume()
     }
 }

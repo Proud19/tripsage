@@ -14,6 +14,6 @@ class MainEntryViewModel: ObservableObject {
     init() { }
     
     public var isSignedIn: Bool {
-        return false
+        return KeyChainUtility.retrieveTokenFromKeychain() != nil
     }
 }
