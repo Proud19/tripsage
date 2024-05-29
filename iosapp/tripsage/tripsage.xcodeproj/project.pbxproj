@@ -81,6 +81,14 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+		FF0C1A4E2C07A43B007710E0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FF0C1A4C2C071B68007710E0 /* KeyChainUtility.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		FF82EAE42BEADD4300738DF8 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +108,7 @@
 		FF82EAEF2BEADD4300738DF8 /* tripsage */ = {
 			isa = PBXGroup;
 			children = (
+				FF0C1A4E2C07A43B007710E0 /* Utilities */,
 				FF82EAF02BEADD4300738DF8 /* tripsageApp.swift */,
 				FFE0F6782BF2908700FD39D9 /* OnBoarding */,
 				FFE0F6732BF28D0C00FD39D9 /* MainEntry */,
@@ -125,7 +134,6 @@
 		FFE0F6642BEB6B4A00FD39D9 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				FF0C1A4C2C071B68007710E0 /* KeyChainUtility.swift */,
 				FF0C1A472C06CD50007710E0 /* SignUp */,
 				FFE0F67B2BF290D900FD39D9 /* LoginView.swift */,
 				FFE0F67D2BF2934200FD39D9 /* LoginViewModel.swift */,
