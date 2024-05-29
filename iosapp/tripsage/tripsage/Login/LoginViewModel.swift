@@ -6,23 +6,25 @@ class LoginViewModel {
     func validateUser(username: String, password: String, completion: @escaping (Bool) -> Void) {
         // Define the URL and the request
         
+    
+        print("Validating user with username: \(username)...")
         
-        completion(true)
-        return
+        guard let loginEndPoint = URLProvider.loginUser else {
+            print("Error in getting endpoint to login the user")
+            completion(false)
+            return 
+        }
         
-        print("Starting to validate...")
-        let url = URL(string: "https://6062-171-66-12-150.ngrok-free.app/auth/login")!
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: loginEndPoint)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        print("About to send request...")
         
         // Define the JSON payload
         let parameters: [String: Any] = [
             "emailAddress": username,
             "password": password
         ]
-        
+        print("Converting payload to json data")
         // Convert the payload to JSON data
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
@@ -32,9 +34,8 @@ class LoginViewModel {
             return
         }
         
-        print("The request body is")
         guard let body = request.httpBody else { return }
-        print(body)
+        print("Request created, the request body is: \(body)")
         
         // Create the data task
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -51,9 +52,8 @@ class LoginViewModel {
                 completion(false)
                 return
             }
-        
-            print(httpResponse)
             
+            print("Got response: \(httpResponse)")
             // Check the HTTP status code
             if httpResponse.statusCode == 200 {
                 if let responseData = data {

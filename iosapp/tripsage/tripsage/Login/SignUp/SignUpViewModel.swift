@@ -11,7 +11,7 @@ class SignUpViewModel {
     
     func registerUser(firstName: String, lastName: String, emailAddress: String, password: String, completion: @escaping (Bool) -> Void) {
         // Define the URL and the request
-        guard let url = URL(string: "https://6062-171-66-12-150.ngrok-free.app/auth/register") else {
+        guard let url = URLProvider.registerUser else {
             print("Invalid URL")
             completion(false)
             return

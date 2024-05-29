@@ -61,7 +61,7 @@ struct SignUpView: View {
                 
                 // Error message for invalid input
                 if pageState == .invalidCredentials {
-                    Text("Invalid input. Please try again.")
+                    Text("An error occurred in registering")
                         .foregroundColor(.red)
                         .padding()
                         .modifier(ShakeEffect(animatableData: shakeEffectTrigger))

@@ -14,6 +14,7 @@
 		FF0C1A492C06CD70007710E0 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A482C06CD70007710E0 /* SignUpView.swift */; };
 		FF0C1A4B2C06CDF3007710E0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A4A2C06CDF3007710E0 /* SignUpViewModel.swift */; };
 		FF0C1A4D2C071B68007710E0 /* KeyChainUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A4C2C071B68007710E0 /* KeyChainUtility.swift */; };
+		FF0C1A522C07D2A5007710E0 /* URLProvider .swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A512C07D2A5007710E0 /* URLProvider .swift */; };
 		FF82EAF12BEADD4300738DF8 /* tripsageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF82EAF02BEADD4300738DF8 /* tripsageApp.swift */; };
 		FF82EAF32BEADD4300738DF8 /* MainEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF82EAF22BEADD4300738DF8 /* MainEntryView.swift */; };
 		FF82EAF52BEADD4600738DF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF82EAF42BEADD4600738DF8 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		FF0C1A482C06CD70007710E0 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		FF0C1A4A2C06CDF3007710E0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		FF0C1A4C2C071B68007710E0 /* KeyChainUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainUtility.swift; sourceTree = "<group>"; };
+		FF0C1A512C07D2A5007710E0 /* URLProvider .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLProvider .swift"; sourceTree = "<group>"; };
 		FF82EAED2BEADD4300738DF8 /* tripsage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tripsage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF82EAF02BEADD4300738DF8 /* tripsageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tripsageApp.swift; sourceTree = "<group>"; };
 		FF82EAF22BEADD4300738DF8 /* MainEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntryView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				FF0C1A4C2C071B68007710E0 /* KeyChainUtility.swift */,
+				FF0C1A512C07D2A5007710E0 /* URLProvider .swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				FF0C1A462C0522BC007710E0 /* MessageViewModel.swift in Sources */,
 				FF0C1A492C06CD70007710E0 /* SignUpView.swift in Sources */,
 				FFE0F67E2BF2934200FD39D9 /* LoginViewModel.swift in Sources */,
+				FF0C1A522C07D2A5007710E0 /* URLProvider .swift in Sources */,
 				FFE0F67C2BF290D900FD39D9 /* LoginView.swift in Sources */,
 				FF0C1A4D2C071B68007710E0 /* KeyChainUtility.swift in Sources */,
 				FFE0F6822BF4990A00FD39D9 /* AccountViewModel .swift in Sources */,
