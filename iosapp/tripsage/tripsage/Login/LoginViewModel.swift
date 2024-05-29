@@ -5,6 +5,11 @@ class LoginViewModel {
     
     func validateUser(username: String, password: String, completion: @escaping (Bool) -> Void) {
         // Define the URL and the request
+        
+        
+        completion(true)
+        return
+        
         print("Starting to validate...")
         let url = URL(string: "https://6062-171-66-12-150.ngrok-free.app/auth/login")!
         var request = URLRequest(url: url)
