@@ -8,6 +8,10 @@
 import Foundation
 
 class URLProvider {
-    static let loginUser = URL(string: "https://6062-171-66-12-150.ngrok-free.app/auth/login")
-    static let registerUser = URL(string: "https://6062-171-66-12-150.ngrok-free.app/auth/register")
+    static let baseURL = "postgres://tripsage_user:ikVzJY0RciGbwaeIeE92gw1jsAder3cf@dpg-cpbrqcsf7o1s7385ld30-a.oregon-postgres.render.com/tripsage/"
+    
+    
+    static let loginUse = URL(string: baseURL + "auth/login")
+    
+    static let registerUser = URL(string: baseURL + "auth/register")
 }
