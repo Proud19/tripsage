@@ -8,10 +8,9 @@
 import Foundation
 
 class URLProvider {
-    static let baseURL = "postgres://tripsage_user:ikVzJY0RciGbwaeIeE92gw1jsAder3cf@dpg-cpbrqcsf7o1s7385ld30-a.oregon-postgres.render.com/tripsage/"
+    static let baseURL = "https://tripsage-latest.onrender.com/"
     
-    
-    static let loginUse = URL(string: baseURL + "auth/login")
+    static let loginUser = URL(string: baseURL + "auth/profile")
     
     static let registerUser = URL(string: baseURL + "auth/register")
 }

@@ -61,10 +61,12 @@ class SignUpViewModel {
                     // Parse the JSON response to extract the token
                     do {
                         if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any],
-                           let token = jsonResponse["access_token"] as? String {
+                           let token = jsonResponse["access_token"] as? String
+                         {
                             print("Access Token: \(token)")
-                            // Save the token to Keychain
+                           
                             KeyChainUtility.saveTokenToKeychain(token)
+                            
                             completion(true)
                         } else {
                             print("Failed to parse JSON response")

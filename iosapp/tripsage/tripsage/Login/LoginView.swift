@@ -40,7 +40,6 @@ struct LoginView: View {
     var loginViewModel = LoginViewModel()
     
     var body: some View {
-        NavigationView {
             VStack {
                 // Logo or title
                 VStack {
@@ -130,11 +129,10 @@ struct LoginView: View {
             }
             .padding()
             .background(
-                NavigationLink(destination: OnBoardingView(), isActive: $loggedIn) {
+                NavigationLink(destination: OnBoardingView(user: Mocker.generateMockUser()), isActive: $loggedIn) {
                     EmptyView()
                 }
             )
-        }
     }
 }
 

@@ -13,7 +13,7 @@ class LoginViewModel {
         if username == secretUserName && password == secretPassword {
             print("Login in user via secret credentials...")
             completion(true)
-            return 
+            return
         }
         
     
@@ -25,27 +25,38 @@ class LoginViewModel {
             return 
         }
         
-        var request = URLRequest(url: loginEndPoint)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        // Define the JSON payload
-        let parameters: [String: Any] = [
-            "emailAddress": username,
-            "password": password
-        ]
-        print("Converting payload to json data")
-        // Convert the payload to JSON data
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-        } catch let error {
-            print("Error: \(error.localizedDescription)")
+        guard let token = KeyChainUtility.retrieveTokenFromKeychain() else
+        {
+            print("Could not retrieve token")
             completion(false)
             return
         }
         
-        guard let body = request.httpBody else { return }
-        print("Request created, the request body is: \(body)")
+        var request = URLRequest(url: loginEndPoint)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer " + token, forHTTPHeaderField: "Authorization")
+        
+//        // Define the JSON payload
+//        let parameters: [String: Any] = [
+//            "emailAddress": username,
+//            "password": password,
+//        ]
+//        print("Converting payload to json data")
+//        // Convert the payload to JSON data
+//        do {
+//            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+//        } catch let error {
+//            print("Error: \(error.localizedDescription)")
+//            completion(false)
+//            return
+//        }
+        
+        
+        
+        
+//        guard let body = request.httpBody else { return }
+//        print("Request created, the request body is: \(body)")
         
         // Create the data task
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -72,11 +83,8 @@ class LoginViewModel {
                     
                     // Parse the JSON response to extract the token
                     do {
-                        if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any],
-                           let token = jsonResponse["access_token"] as? String {
-                            print("Access Token: \(token)")
-                            // Save the token to Keychain
-                            KeyChainUtility.saveTokenToKeychain(token)
+                        if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any]
+                        {
                             completion(true)
                         } else {
                             print("Failed to parse JSON response")

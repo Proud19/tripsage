@@ -24,7 +24,6 @@ struct SignUpView: View {
     var signUpViewModel = SignUpViewModel()
     
     var body: some View {
-        NavigationView {
             VStack {
                 // Logo or title
                 VStack {
@@ -106,12 +105,11 @@ struct SignUpView: View {
             }
             .padding()
             .background(
-                NavigationLink(destination: OnBoardingView()) {
+                NavigationLink(destination: OnBoardingView(user: Mocker.generateMockUser()), isActive: $accountCreated) {
                     EmptyView()
                 }
             )
         }
-    }
 }
 
 #Preview {

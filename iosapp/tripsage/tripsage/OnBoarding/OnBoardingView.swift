@@ -14,83 +14,85 @@ struct OnBoardingView: View {
     @State private var onBoardingViewModel = OnBoardingViewModel()
     @State private var isDoneAddingInterests = false
     
+    let user: User
+    
     var body: some View {
-        if onBoardingViewModel.userNeedOnBoarding {
-            VStack {
-                Text("Add Your Interests")
-                    .font(.title)
+            if onBoardingViewModel.userNeedOnBoarding {
+                VStack {
+                    Text("Hie \(user.firstName), Sage would like to know what you are interested in. You can update these in your profile settings later ")
+                        .font(.title)
+                        .padding()
+
+                    HStack {
+                        TextField("Type your interest", text: $interestInput)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding()
+                            .onChange(of: interestInput) { newValue in
+                                if newValue.count > 50 {
+                                    interestInput = String(newValue.prefix(50))
+                                }
+                            }
+
+                        Button(action: {
+                            if !interestInput.isEmpty {
+                                selectedInterests.append(interestInput)
+                                interestInput = ""
+                            }
+                        }) {
+                            Image(systemName: "plus")
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(Color.sage)
+                                .cornerRadius(5)
+                        }
+                        .padding(.trailing)
+                    }
                     .padding()
 
-                HStack {
-                    TextField("Type your interest", text: $interestInput)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
-                        .onChange(of: interestInput) { newValue in
-                            if newValue.count > 50 {
-                                interestInput = String(newValue.prefix(50))
+                    List {
+                        ForEach(selectedInterests, id: \.self) { interest in
+                            HStack {
+                                Text(interest)
+                                Spacer()
+                                Button(action: {
+                                    if let index = selectedInterests.firstIndex(of: interest) {
+                                        selectedInterests.remove(at: index)
+                                    }
+                                }) {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .foregroundColor(.red)
+                                }
                             }
                         }
+                        .padding(.vertical, 5)
+                    }
+                    .padding()
+                    .listStyle(PlainListStyle())
 
                     Button(action: {
-                        if !interestInput.isEmpty {
-                            selectedInterests.append(interestInput)
-                            interestInput = ""
-                        }
+                        isDoneAddingInterests = true
                     }) {
-                        Image(systemName: "plus")
-                            .foregroundColor(.white)
+                        Text("Done")
                             .padding()
                             .background(Color.sage)
-                            .cornerRadius(5)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
                     }
-                    .padding(.trailing)
+                    .padding()
                 }
                 .padding()
-
-                List {
-                    ForEach(selectedInterests, id: \.self) { interest in
-                        HStack {
-                            Text(interest)
-                            Spacer()
-                            Button(action: {
-                                if let index = selectedInterests.firstIndex(of: interest) {
-                                    selectedInterests.remove(at: index)
-                                }
-                            }) {
-                                Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(.red)
-                            }
-                        }
+                .background(
+                    NavigationLink(destination: SageTabView().navigationBarBackButtonHidden(), isActive: $isDoneAddingInterests) {
+                        EmptyView()
                     }
-                    .padding(.vertical, 5)
-                }
-                .padding()
-                .listStyle(PlainListStyle())
-
-                Button(action: {
-                    isDoneAddingInterests = true
-                }) {
-                    Text("Done")
-                        .padding()
-                        .background(Color.sage)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-                .padding()
+                )
+                
+            } else {
+                SageTabView()
             }
-            .padding()
-            .background(
-                NavigationLink(destination: SageTabView().navigationBarBackButtonHidden(), isActive: $isDoneAddingInterests) {
-                    EmptyView()
-                }
-            )
-            
-        } else {
-            SageTabView()
         }
-    }
 }
 
 #Preview {
-    OnBoardingView()
+    OnBoardingView(user: Mocker.generateMockUser())
 }
