@@ -12,10 +12,6 @@ struct SettingsView: View {
 
     var body: some View {
         VStack {
-            Text("Settings")
-                .font(.largeTitle)
-                .padding()
-
             Spacer()
 
             Button(action: {
@@ -30,9 +26,18 @@ struct SettingsView: View {
                     .cornerRadius(10)
                     .padding(.horizontal)
             }
-
-            Spacer()
         }
+        .navigationBarBackButtonHidden(false)
+        .navigationBarBackground(.sage)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Settings")
+                    .font(.title3)
+                    .bold()
+                    .foregroundColor(.white)
+            }
+        }
+        
     }
 }
 
