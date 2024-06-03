@@ -36,9 +36,9 @@ struct MainEntryView: View {
     
     let mockUser = Mocker.generateMockUser()
 
-    private let sageIcon: UIImage = {
-        guard let image = Bundle.main.icon else { return UIImage() }
-        return image
+    private let sageImage: UIImage = {
+            guard let image = UIImage(named: "sageImage") else { return UIImage() }
+            return image
     }()
 
     var body: some View {
@@ -47,7 +47,7 @@ struct MainEntryView: View {
                 if mainEntryViewModel.isLoading {
                     VStack {
                         Spacer()
-                        Image(uiImage: sageIcon)
+                        Image(uiImage: sageImage)
                             .resizable()
                             .frame(width: 100, height: 100)
                             .cornerRadius(5.0)

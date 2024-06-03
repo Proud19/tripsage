@@ -23,6 +23,9 @@
 		FF82EAF52BEADD4600738DF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF82EAF42BEADD4600738DF8 /* Assets.xcassets */; };
 		FF82EAF82BEADD4600738DF8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF82EAF72BEADD4600738DF8 /* Preview Assets.xcassets */; };
 		FFE0D3B82C0D8B17004C9B2F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0D3B72C0D8B17004C9B2F /* NetworkManager.swift */; };
+		FFE0D3BB2C0DB6B3004C9B2F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0D3BA2C0DB6B3004C9B2F /* SettingsView.swift */; };
+		FFE0D3BD2C0DB6E2004C9B2F /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0D3BC2C0DB6E2004C9B2F /* SettingsViewModel.swift */; };
+		FFE0D3C02C0E45DB004C9B2F /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0D3BF2C0E45DB004C9B2F /* KeyboardResponder.swift */; };
 		FFE0F66A2BEB6E1500FD39D9 /* SageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0F6692BEB6E1500FD39D9 /* SageTabView.swift */; };
 		FFE0F66C2BEB6F6C00FD39D9 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0F66B2BEB6F6C00FD39D9 /* ActivityView.swift */; };
 		FFE0F66E2BEB6F7B00FD39D9 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0F66D2BEB6F7B00FD39D9 /* ExploreView.swift */; };
@@ -57,6 +60,9 @@
 		FF82EAF42BEADD4600738DF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF82EAF72BEADD4600738DF8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FFE0D3B72C0D8B17004C9B2F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FFE0D3BA2C0DB6B3004C9B2F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		FFE0D3BC2C0DB6E2004C9B2F /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		FFE0D3BF2C0E45DB004C9B2F /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		FFE0F6692BEB6E1500FD39D9 /* SageTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SageTabView.swift; sourceTree = "<group>"; };
 		FFE0F66B2BEB6F6C00FD39D9 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		FFE0F66D2BEB6F7B00FD39D9 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
@@ -100,6 +106,7 @@
 				FF0C1A562C094138007710E0 /* Mocker .swift */,
 				FF0C1A582C0ADB4D007710E0 /* LocationManager.swift */,
 				FFE0D3B72C0D8B17004C9B2F /* NetworkManager.swift */,
+				FFE0D3BF2C0E45DB004C9B2F /* KeyboardResponder.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -156,6 +163,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		FFE0D3B92C0DB697004C9B2F /* Settings  */ = {
+			isa = PBXGroup;
+			children = (
+				FFE0D3BA2C0DB6B3004C9B2F /* SettingsView.swift */,
+				FFE0D3BC2C0DB6E2004C9B2F /* SettingsViewModel.swift */,
+			);
+			path = "Settings ";
+			sourceTree = "<group>";
+		};
 		FFE0F6642BEB6B4A00FD39D9 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +205,7 @@
 		FFE0F6672BEB6D5500FD39D9 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				FFE0D3B92C0DB697004C9B2F /* Settings  */,
 				FFE0F6842BF4994700FD39D9 /* History */,
 				FFE0F6832BF4993800FD39D9 /* Interests */,
 				FFE0F6812BF4990A00FD39D9 /* AccountViewModel .swift */,
@@ -326,11 +343,14 @@
 				FF0C1A592C0ADB4D007710E0 /* LocationManager.swift in Sources */,
 				FF0C1A442C052293007710E0 /* MessageView.swift in Sources */,
 				FF0C1A4B2C06CDF3007710E0 /* SignUpViewModel.swift in Sources */,
+				FFE0D3BD2C0DB6E2004C9B2F /* SettingsViewModel.swift in Sources */,
 				FF0C1A462C0522BC007710E0 /* MessageViewModel.swift in Sources */,
 				FF0C1A492C06CD70007710E0 /* SignUpView.swift in Sources */,
 				FFE0F67E2BF2934200FD39D9 /* LoginViewModel.swift in Sources */,
 				FF0C1A572C094138007710E0 /* Mocker .swift in Sources */,
 				FF0C1A522C07D2A5007710E0 /* URLProvider .swift in Sources */,
+				FFE0D3BB2C0DB6B3004C9B2F /* SettingsView.swift in Sources */,
+				FFE0D3C02C0E45DB004C9B2F /* KeyboardResponder.swift in Sources */,
 				FFE0F67C2BF290D900FD39D9 /* LoginView.swift in Sources */,
 				FF0C1A4D2C071B68007710E0 /* KeyChainUtility.swift in Sources */,
 				FF0C1A552C092B59007710E0 /* User.swift in Sources */,

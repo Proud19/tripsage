@@ -1,12 +1,12 @@
 import Foundation
 import Security
 
-class LoginViewModel {
+class LoginViewModel: ObservableObject {
     
     private let secretUserName = "t@g.com"
     private let secretPassword = "sage"
     
-    var user: User?
+    @Published var user: User?
     
     
     func validateUser(username: String, password: String, completion: @escaping (Bool) -> Void) {

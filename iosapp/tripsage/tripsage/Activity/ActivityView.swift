@@ -1,5 +1,7 @@
 import SwiftUI
 
+import SwiftUI
+
 class ChatViewModel: ObservableObject {
     
     @Published var messages = [Message]()
@@ -27,44 +29,46 @@ struct ActivityView: View {
     @State var text = ""
     
     var body: some View {
-        VStack {
-            ScrollViewReader { scrollViewProxy in
-                ScrollView {
-                    VStack(spacing: 8) {
-                        ForEach(chatViewModel.mockData) { message in
-                            MessageView(message: message)
-                                .id(message.id) // Ensure each message has a unique ID
+        NavigationView {
+            VStack {
+                ScrollViewReader { scrollViewProxy in
+                    ScrollView {
+                        VStack(spacing: 8) {
+                            ForEach(chatViewModel.mockData) { message in
+                                MessageView(message: message)
+                                    .id(message.id) // Ensure each message has a unique ID
+                            }
+                        }
+                    }
+                    .onChange(of: chatViewModel.mockData) { _ in
+                        if let lastMessage = chatViewModel.mockData.last {
+                            withAnimation {
+                                scrollViewProxy.scrollTo(lastMessage.id, anchor: .bottom)
+                            }
                         }
                     }
                 }
-                .onChange(of: chatViewModel.mockData) { _ in
-                    if let lastMessage = chatViewModel.mockData.last {
-                        withAnimation {
-                            scrollViewProxy.scrollTo(lastMessage.id, anchor: .bottom)
-                        }
-                    }
-                }
-            }
-            HStack {
-                TextField("Hello there", text: $text, axis: .vertical)
-                    .padding()
-                Button {
-                    if text.count >= 2 {
-                        chatViewModel.sendMessage(text: text)
-                        text = ""
-                    }
-                } label: {
-                    Text("Send")
+                HStack {
+                    TextField("Hello there", text: $text, axis: .vertical)
                         .padding()
-                        .foregroundColor(.white)
-                        .background(Color.mint)
-                        .cornerRadius(50)
-                        .padding(.trailing)
+                    Button {
+                        if text.count >= 2 {
+                            chatViewModel.sendMessage(text: text)
+                            text = ""
+                        }
+                    } label: {
+                        Text("Send")
+                            .padding()
+                            .foregroundColor(.white)
+                            .background(Color.mint)
+                            .cornerRadius(50)
+                            .padding(.trailing)
+                    }
                 }
+                .background(Color(uiColor: .systemGray6))
             }
-            .background(Color(uiColor: .systemGray6))
+            .padding([.top], 10)
         }
-        .padding([.top], 10)
     }
 }
 

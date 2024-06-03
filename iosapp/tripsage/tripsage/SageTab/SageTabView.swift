@@ -41,7 +41,6 @@ extension Bundle {
 }
 
 struct SageTabView: View {
-    
     @State private var selectedIndex = 0
     private let tabTitles = ["What's Nearby", "Activity", "Profile"]
     
@@ -58,6 +57,7 @@ struct SageTabView: View {
     }()
     
     @EnvironmentObject var locationManager: LocationManager
+    @StateObject private var keyboardResponder = KeyboardResponder()
     
     init(user: User) {
         UITabBar.appearance().backgroundColor = UIColor(Color.sage)
@@ -65,6 +65,11 @@ struct SageTabView: View {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().tintColor = .white
         self.user = user
+    }
+    
+    // Function to hide the keyboard
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
     var body: some View {
@@ -81,11 +86,46 @@ struct SageTabView: View {
                 .navigationTitle("")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    if selectedIndex == 1 {
-                        ToolbarItem(placement: .principal) {
-                            Image(uiImage: sageImage)
+                    if selectedIndex == 2 {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Image(uiImage: sageIcon)
                                 .resizable()
                                 .frame(width: 40, height: 40)
+                        }
+                        ToolbarItem(placement: .principal) {
+                            Text(tabTitles[selectedIndex])
+                                .font(.title)
+                                .bold()
+                                .foregroundColor(.white)
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            NavigationLink(destination: SettingsView()) {
+                                Image(systemName: "gearshape")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundColor(.white)
+                            }
+                        }
+                    } else if selectedIndex == 1 {
+                        if keyboardResponder.isKeyboardVisible {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Button(action: {
+                                    hideKeyboard()
+                                }) {
+                                    Image(systemName: "arrow.backward")
+                                }
+                            }
+                            ToolbarItem(placement: .principal) {
+                                Image(uiImage: sageImage)
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                            }
+                        } else {
+                            ToolbarItem(placement: .principal) {
+                                Image(uiImage: sageImage)
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                            }
                         }
                     } else {
                         ToolbarItem(placement: .navigationBarLeading) {
@@ -108,8 +148,19 @@ struct SageTabView: View {
                     UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
                     UINavigationBar.appearance().tintColor = .white
                 }
+                
+                if keyboardResponder.isKeyboardVisible {
+                    Color.clear
+                        .onAppear {
+                            UITabBar.appearance().isHidden = true
+                        }
+                        .onDisappear {
+                            UITabBar.appearance().isHidden = false
+                        }
+                }
             }
         }
+        .environmentObject(keyboardResponder)
     }
 }
 
@@ -118,6 +169,7 @@ struct CustomTabView<Content: View>: View {
     let content: Content
     
     @EnvironmentObject var locationManager: LocationManager
+    @EnvironmentObject var keyboardResponder: KeyboardResponder
 
     init(selectedIndex: Binding<Int>, @ViewBuilder content: () -> Content) {
         self._selectedIndex = selectedIndex
@@ -133,24 +185,27 @@ struct CustomTabView<Content: View>: View {
                                 .foregroundColor(.clear)
                         )
             }
-            HStack {
-                TabBarItem(icon: "magnifyingglass.circle", isSelected: selectedIndex == 0)
-                    .onTapGesture {
-                        selectedIndex = 0
-                    }
-                Spacer()
-                TabBarItem(icon: "record.circle", isSelected: selectedIndex == 1, isLarge: true)
-                    .onTapGesture {
-                        selectedIndex = 1
-                    }
-                Spacer()
-                TabBarItem(icon: "person.crop.circle", isSelected: selectedIndex == 2)
-                    .onTapGesture {
-                        selectedIndex = 2
-                    }
+            if !keyboardResponder.isKeyboardVisible {
+                HStack {
+                    TabBarItem(icon: "magnifyingglass.circle", isSelected: selectedIndex == 0)
+                        .onTapGesture {
+                            selectedIndex = 0
+                        }
+                    Spacer()
+                    TabBarItem(icon: "record.circle", isSelected: selectedIndex == 1, isLarge: true)
+                        .onTapGesture {
+                            selectedIndex = 1
+                        }
+                    Spacer()
+                    TabBarItem(icon: "person.crop.circle", isSelected: selectedIndex == 2)
+                        .onTapGesture {
+                            selectedIndex = 2
+                        }
+                }
+                .padding()
+                .background(Color.sage)
+                .foregroundColor(.white)
             }
-            .padding()
-            .background(Color.sage)
         }.toolbarBackground(.hidden, for: .tabBar)
     }
 }
@@ -171,7 +226,6 @@ struct TabBarItem: View {
             .scaleEffect(isLarge ? 1.5 : 1.0)
     }
 }
-
 
 #Preview {
     SageTabView(user: Mocker.generateMockUser())
