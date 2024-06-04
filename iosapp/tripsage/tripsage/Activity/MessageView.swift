@@ -10,8 +10,13 @@ import SwiftUI
 struct MessageView: View {
     var message: Message
     
+    private let sageImage: UIImage = {
+            guard let image = UIImage(named: "sageImage") else { return UIImage() }
+            return image
+    }()
+    
     var body: some View {
-        if message.isFromUser {
+        if !message.isFromUser {
             HStack () {
                 HStack () {
                     Text(message.text).padding()
@@ -20,8 +25,10 @@ struct MessageView: View {
                 .background(Color(uiColor: .systemBlue))
                 .cornerRadius(20)
                 
-                Image(systemName: "person")
-                    .frame(maxHeight: 32, alignment: .top)
+                Image(uiImage: sageImage)
+                    .resizable()
+                    .frame(width: 32, height: 32, alignment: .top)
+                    .cornerRadius(16)
                     .padding(.trailing, 4)
             }
             .frame(maxWidth: 360, alignment: .trailing)

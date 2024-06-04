@@ -1,35 +1,19 @@
-//
-//  LoginView.swift
-//  tripsage
-//
-//  Created by Proud Mpala on 5/13/24.
-//
-
 import SwiftUI
 
-// Shake effect modifier
-struct ShakeEffect: GeometryEffect {
-    var amount: CGFloat = 10
-    var shakesPerUnit = 3
-    var animatableData: CGFloat
-
-    func effectValue(size: CGSize) -> ProjectionTransform {
-        ProjectionTransform(CGAffineTransform(translationX: amount * sin(animatableData * .pi * CGFloat(shakesPerUnit)), y: 0))
-    }
-}
-
-enum LoginPageState {
+enum SignUpPageState {
     case normal
     case invalidCredentials
     case loading
 }
 
-struct LoginView: View {
+struct SignUpView: View {
 
-    @State private var username: String = ""
+    @State private var firstName: String = ""
+    @State private var lastName: String = ""
+    @State private var emailAddress: String = ""
     @State private var password: String = ""
-    @State private var loggedIn: Bool = false
-    @State private var pageState: LoginPageState = .normal
+    @State private var accountCreated: Bool = false
+    @State private var pageState: SignUpPageState = .normal
     @State private var shakeEffectTrigger: CGFloat = 0
     
     private let sageIcon: UIImage = {
@@ -37,21 +21,33 @@ struct LoginView: View {
         return image
     }()
     
-    @State var loginViewModel = LoginViewModel()
+    var signUpViewModel = SignUpViewModel()
     
     var body: some View {
             VStack {
                 // Logo or title
                 VStack {
-                    Text("Login")
+                    Text("Sign Up")
                         .font(.title)
                         .bold()
                     Image(uiImage: sageIcon)
                         .cornerRadius(5)
                 }
                 
-                // Username text field
-                TextField("Email Address", text: $username)
+                // First name text field
+                TextField("First Name", text: $firstName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .disabled(pageState == .loading)
+                
+                // Last name text field
+                TextField("Last Name", text: $lastName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .disabled(pageState == .loading)
+                
+                // Email address text field
+                TextField("Email Address", text: $emailAddress)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                     .disabled(pageState == .loading)
@@ -62,9 +58,9 @@ struct LoginView: View {
                     .padding()
                     .disabled(pageState == .loading)
                 
-                // Error message for invalid credentials
+                // Error message for invalid input
                 if pageState == .invalidCredentials {
-                    Text("Invalid username or password")
+                    Text("An error occurred in registering")
                         .foregroundColor(.red)
                         .padding()
                         .modifier(ShakeEffect(animatableData: shakeEffectTrigger))
@@ -75,13 +71,13 @@ struct LoginView: View {
                         }
                 }
                 
-                // Login button
+                // Sign Up button
                 Button(action: {
                     pageState = .loading
-                    loginViewModel.validateUser(username: username, password: password) { success in
+                    signUpViewModel.registerUser(firstName: firstName, lastName: lastName, emailAddress: emailAddress, password: password) { success in
                         pageState = .normal
                         if success {
-                            loggedIn = true
+                            accountCreated = true
                         } else {
                             pageState = .invalidCredentials
                         }
@@ -95,7 +91,7 @@ struct LoginView: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     } else {
-                        Text("Login")
+                        Text("Sign Up")
                             .padding()
                             .background(Color.sage)
                             .foregroundColor(.white)
@@ -104,38 +100,19 @@ struct LoginView: View {
                 }
                 .disabled(pageState == .loading)
                 
-                // Additional actions like forgot password or signup
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        // Forgot password action
-                        print("Forgot password tapped")
-                    }) {
-                        Text("Forgot Password?")
-                            .foregroundColor(.sage)
-                    }
-                }
-                .padding(.top, 10)
-                
-                // Button to sign up
-                NavigationLink(destination: SignUpView()) {
-                    Text("Do not have an account, sign up instead")
-                        .foregroundColor(.blue)
-                        .padding(.top, 20)
-                }
-
                 // Spacer to push content to the top
                 Spacer()
             }
             .padding()
             .background(
-                NavigationLink(destination: OnBoardingView(user: loginViewModel.user ?? User.emptyUser()), isActive: $loginViewModel.userLoggedIn) {
+                NavigationLink(destination: OnBoardingView(user: signUpViewModel.user ?? User.emptyUser()), isActive: $accountCreated) {
                     EmptyView()
                 }
             )
-    }
+        }
 }
 
 #Preview {
-    LoginView()
+    SignUpView()
 }
+

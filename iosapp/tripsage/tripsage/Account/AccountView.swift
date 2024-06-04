@@ -10,11 +10,11 @@ import SwiftUI
 struct AccountView: View {
     var body: some View {
         ScrollView {
-            VStack {
-                InterestsView()
-                    .frame(height: 200)
-                HistoryView()
-            }
+          
+            InterestsView()
+                .frame(height: 200)
+            HistoryView()
+       
         }.padding(10)
     }
 }
