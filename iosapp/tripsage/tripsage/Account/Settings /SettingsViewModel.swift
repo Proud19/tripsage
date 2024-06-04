@@ -9,8 +9,4 @@ import Foundation
 
 class SettingsViewModel: ObservableObject {
     
-    func logout() {
-        // Implement logout functionality here
-        print("User logged out")
-    }
 }

@@ -35,6 +35,8 @@ struct MainEntryView: View {
     @State private var pulse = false
     
     let mockUser = Mocker.generateMockUser()
+    
+    @EnvironmentObject var appState: AppState
 
     private let sageImage: UIImage = {
             guard let image = UIImage(named: "sageImage") else { return UIImage() }

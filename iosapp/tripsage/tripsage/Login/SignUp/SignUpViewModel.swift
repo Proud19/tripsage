@@ -69,16 +69,8 @@ class SignUpViewModel {
                          {
                             print("Access Token: \(token)")
                             KeyChainUtility.saveTokenToKeychain(token)
-                            
-                            self.loginViewModel.validateUser(username: emailAddress, password: password) { success in
-                                if success {
-                                    self.user = self.loginViewModel.user
-                                    completion(true)
-                                } else {
-                                    print("Could not retrieve the user")
-                                    completion(false)
-                                }
-                            }
+                            self.user = self.loginViewModel.user
+                            completion(true)
                         } else {
                             print("Failed to parse JSON response")
                             completion(false)

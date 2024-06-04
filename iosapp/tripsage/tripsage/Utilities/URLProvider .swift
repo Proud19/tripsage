@@ -13,4 +13,6 @@ class URLProvider {
     static let loginUser = URL(string: baseURL + "auth/profile")
     
     static let registerUser = URL(string: baseURL + "auth/register")
+    
+    static let nearby = URL(string: baseURL + "attractions/nearby")
 }

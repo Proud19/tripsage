@@ -20,6 +20,8 @@
 		FF0C1A592C0ADB4D007710E0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A582C0ADB4D007710E0 /* LocationManager.swift */; };
 		FF6AF1D62C0E8DB80067D569 /* SageTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF1D52C0E8DB80067D569 /* SageTabViewModel.swift */; };
 		FF6AF1D82C0EF4C50067D569 /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF1D72C0EF4C50067D569 /* ActivityViewModel.swift */; };
+		FF6AF1DA2C0F9D720067D569 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF1D92C0F9D720067D569 /* AppState.swift */; };
+		FF6AF1DC2C0FBB2E0067D569 /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF1DB2C0FBB2E0067D569 /* ExploreViewModel.swift */; };
 		FF82EAF12BEADD4300738DF8 /* tripsageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF82EAF02BEADD4300738DF8 /* tripsageApp.swift */; };
 		FF82EAF32BEADD4300738DF8 /* MainEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF82EAF22BEADD4300738DF8 /* MainEntryView.swift */; };
 		FF82EAF52BEADD4600738DF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF82EAF42BEADD4600738DF8 /* Assets.xcassets */; };
@@ -58,6 +60,8 @@
 		FF0C1A5A2C0AE5A6007710E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FF6AF1D52C0E8DB80067D569 /* SageTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SageTabViewModel.swift; sourceTree = "<group>"; };
 		FF6AF1D72C0EF4C50067D569 /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
+		FF6AF1D92C0F9D720067D569 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		FF6AF1DB2C0FBB2E0067D569 /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
 		FF82EAED2BEADD4300738DF8 /* tripsage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tripsage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF82EAF02BEADD4300738DF8 /* tripsageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tripsageApp.swift; sourceTree = "<group>"; };
 		FF82EAF22BEADD4300738DF8 /* MainEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntryView.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				FFE0F66D2BEB6F7B00FD39D9 /* ExploreView.swift */,
 				BB7F98972BF1B16D0055A9D8 /* HeartButton.swift */,
 				BBFD8C5C2BF183230076568D /* LandmarksView.swift */,
+				FF6AF1DB2C0FBB2E0067D569 /* ExploreViewModel.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 			children = (
 				FF82EAF22BEADD4300738DF8 /* MainEntryView.swift */,
 				FFE0F6742BF28D2800FD39D9 /* MainEntryViewModel.swift */,
+				FF6AF1D92C0F9D720067D569 /* AppState.swift */,
 			);
 			path = MainEntry;
 			sourceTree = "<group>";
@@ -339,6 +345,7 @@
 				FF82EAF32BEADD4300738DF8 /* MainEntryView.swift in Sources */,
 				FFE0F66C2BEB6F6C00FD39D9 /* ActivityView.swift in Sources */,
 				FFE0F68A2BF4A50B00FD39D9 /* HistoryViewModel.swift in Sources */,
+				FF6AF1DA2C0F9D720067D569 /* AppState.swift in Sources */,
 				FFE0F67A2BF2909F00FD39D9 /* OnBoardingView.swift in Sources */,
 				FFE0F66A2BEB6E1500FD39D9 /* SageTabView.swift in Sources */,
 				BB7F98982BF1B16D0055A9D8 /* HeartButton.swift in Sources */,
@@ -358,6 +365,7 @@
 				FF0C1A572C094138007710E0 /* Mocker .swift in Sources */,
 				FF0C1A522C07D2A5007710E0 /* URLProvider .swift in Sources */,
 				FFE0D3BB2C0DB6B3004C9B2F /* SettingsView.swift in Sources */,
+				FF6AF1DC2C0FBB2E0067D569 /* ExploreViewModel.swift in Sources */,
 				FFE0D3C02C0E45DB004C9B2F /* KeyboardResponder.swift in Sources */,
 				FFE0F67C2BF290D900FD39D9 /* LoginView.swift in Sources */,
 				FF0C1A4D2C071B68007710E0 /* KeyChainUtility.swift in Sources */,

@@ -1,16 +1,18 @@
 import SwiftUI
 
 struct LandmarksView: View {
-    var landmark_images = ["exp-1", "exp-2", "exp-3", "exp-4"]
+    let landmark: Landmark
 
     var body: some View {
         VStack(spacing: 8) {
             // landmark images
             TabView {
-                ForEach(landmark_images, id: \.self) { image in
-                    Image(image)
-                        .resizable()
-                        .scaledToFill()
+                ForEach(landmark.photoUrls, id: \.self) { imageUrl in
+                    AsyncImage(url: URL(string: imageUrl)) { image in
+                        image.resizable().scaledToFill()
+                    } placeholder: {
+                        ProgressView()
+                    }
                 }
             }
             .frame(height: UIScreen.main.bounds.height / 2) // Adjust the height as needed
@@ -22,15 +24,16 @@ struct LandmarksView: View {
                 // first line
                 HStack {
                     // landmark name
-                    Text("Memorial Church").fontWeight(.semibold)
+                    Text(landmark.name).fontWeight(.semibold)
                     Spacer()
                     // distance away
-                    Text("1 mile away")
+                    // Assuming you have some method to calculate distance
+                    Text("\(calculateDistance(from: landmark)) miles away")
                 }
                 // second line
                 HStack {
                     // city / town name
-                    Text("Stanford, CA").foregroundStyle(.gray)
+                    Text(landmark.address).foregroundStyle(.gray)
 
                     // like button
                     Spacer()
@@ -43,7 +46,7 @@ struct LandmarksView: View {
                     Spacer()
                     VStack {
                         Spacer()
-                        Text("Stanford Memorial Church is located on the Main Quad at the center of the Stanford University campus in Stanford, California, United States. It was built during the American Renaissance by Jane Stanford as a memorial to her husband Leland.")
+                        Text(landmark.description)
                         Spacer()
                     }
                     Spacer()
@@ -57,8 +60,9 @@ struct LandmarksView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity) // Make it take the whole screen
         .padding(10)
     }
-}
-
-#Preview {
-    LandmarksView()
+    
+    // Mock function for distance calculation, replace with actual implementation
+    func calculateDistance(from landmark: Landmark) -> Double {
+        return 1.0
+    }
 }

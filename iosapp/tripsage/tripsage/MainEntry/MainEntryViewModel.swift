@@ -38,6 +38,10 @@ class MainEntryViewModel: ObservableObject {
             completion(false)
             return
         }
+        if let query = URLProvider.nearby  {
+            print("The retrieved token, so can use the command: \ncurl -X GET '\(query)?latitude=40.7128&longitude=-74.0060' -H 'Authorization: Bearer \(token)'")
+        }
+        
         
         var request = URLRequest(url: loginEndPoint)
         request.httpMethod = "GET"

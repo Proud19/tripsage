@@ -12,11 +12,13 @@ import BackgroundTasks
 struct tripsageApp: App {
     @StateObject private var locationManager = LocationManager.shared
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject private var appState = AppState()
     
     var body: some Scene {
         WindowGroup {
             MainEntryView()
                 .environmentObject(locationManager)
+                .environmentObject(appState)
                 .onAppear {
                     locationManager.startUpdatingLocation()
                 }

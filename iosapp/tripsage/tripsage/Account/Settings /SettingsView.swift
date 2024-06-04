@@ -9,13 +9,14 @@ import SwiftUI
 
 struct SettingsView: View {
     @StateObject private var viewModel = SettingsViewModel()
+    @EnvironmentObject var appState: AppState
 
     var body: some View {
         VStack {
             Spacer()
 
             Button(action: {
-                viewModel.logout()
+                appState.logout()
             }) {
                 Text("Logout")
                     .font(.headline)

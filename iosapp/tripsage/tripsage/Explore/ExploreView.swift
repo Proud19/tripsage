@@ -31,13 +31,16 @@ struct SwipeArrowView: View {
 struct VerticalSwipeView: View {
     @State private var currentIndex: Int = 0
     @State private var showSwipeArrow = true
-    let landmarks: [Int] = Array(0...5) // Dummy data, replace with actual landmarks if needed
+    @StateObject var exploreViewModel = ExploreViewModel()
 
     var body: some View {
         GeometryReader { geometry in
+            let _ = {
+                print(exploreViewModel.landmarks)
+            }()
             ZStack {
-                ForEach(landmarks.indices, id: \.self) { index in
-                    LandmarksView()
+                ForEach(exploreViewModel.landmarks.indices, id: \.self) { index in
+                    LandmarksView(landmark: exploreViewModel.landmarks[index])
                         .frame(width: geometry.size.width, height: geometry.size.height)
                         .offset(y: CGFloat(index - currentIndex) * geometry.size.height)
                         .animation(.spring(), value: currentIndex)
@@ -45,7 +48,7 @@ struct VerticalSwipeView: View {
                             DragGesture()
                                 .onEnded { value in
                                     withAnimation {
-                                        if value.translation.height < -50, currentIndex < landmarks.count - 1 {
+                                        if value.translation.height < -50, currentIndex < exploreViewModel.landmarks.count - 1 {
                                             currentIndex += 1
                                             showSwipeArrow = false
                                         } else if value.translation.height > 50, currentIndex > 0 {
