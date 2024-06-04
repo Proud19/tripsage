@@ -22,4 +22,7 @@ struct User: Codable, Identifiable {
         case emailAddress
     }
     
+    static func emptyUser() -> User {
+        return User(id: "", firstName: "", lastName: "", emailAddress: "")
+    }
 }

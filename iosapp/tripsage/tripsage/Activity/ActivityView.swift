@@ -1,79 +1,153 @@
 import SwiftUI
 
-import SwiftUI
 
-class ChatViewModel: ObservableObject {
+enum ActivityViewState {
+    case tripNotStarted
+    case tripInSession
+    case tripFinished
+    case savingFinishedTrip
+}
+
+struct InactiveView: View {
     
-    @Published var messages = [Message]()
+    @StateObject var activityViewModel: ActivityViewModel
     
-    @Published var mockData = [
-        Message(userId: "12345", text: "Welcome to Salt Lake City!\nMy name is Sage, and I’ll be your tour guide today. I’ll be back when you’re near a landmark you might be interested in!", PhotoURL: "", createdAt: Date(), isFromUser: false),
-        Message(userId: "12345", text: "You are near the Natural History Museum of Utah, a museum as dramatic as the wonders it holds. There, you can learn about the natural world and the place of humans within it", PhotoURL: "", createdAt: Date(), isFromUser: false),
-    ]
+    private let sageImage: UIImage = {
+        guard let image = UIImage(named: "sageImage") else { return UIImage() }
+        return image
+    }()
+    @State private var pulse = false
+    var tripDelegate: TripDelegate?
     
-    func sendMessage(text: String) {
-        print(text)
-        let userMessage = Message(userId: "12345", text: text, PhotoURL: "", createdAt: Date(), isFromUser: true)
-        mockData.append(userMessage)
-        
-        // Simulate a response after a delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let responseMessage = Message(userId: "54321", text: "Thank you for your message! How can I assist you further?", PhotoURL: "", createdAt: Date(), isFromUser: false)
-            self.mockData.append(responseMessage)
+    var body: some View {
+        VStack {
+            MessageView(message: Message(userId: "", text: "Start a trip to hear what Sage has in store for you!", PhotoURL: "", createdAt: Date(), isFromUser: false))
+            Spacer()
+            Button(action: {
+                activityViewModel.activityViewPageState = .tripInSession
+                tripDelegate?.userDidStartTrip()
+            }) {
+                Image(systemName: "play")
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.sageOrange)
+                    .clipShape(Circle())
+                    .scaleEffect(pulse ? 1.5 : 1.0)
+                    .animation(
+                        Animation.easeInOut(duration: 1)
+                            .repeatForever(autoreverses: true),
+                        value: pulse
+                    )
+            }
+            Spacer().frame(height: 20)
+        }
+        .frame(maxWidth: .infinity)
+        .onAppear {
+            pulse = true
+        }
+        .padding()
+        .onAppear {
+            activityViewModel.serveInitialMessages()
         }
     }
 }
 
+
+
 struct ActivityView: View {
-    @StateObject var chatViewModel = ChatViewModel()
+    
+    @StateObject var activityViewModel: ActivityViewModel
     @State var text = ""
+    
+    var tripDelegate: TripDelegate?
+    
     
     var body: some View {
         NavigationView {
-            VStack {
-                ScrollViewReader { scrollViewProxy in
-                    ScrollView {
-                        VStack(spacing: 8) {
-                            ForEach(chatViewModel.mockData) { message in
-                                MessageView(message: message)
-                                    .id(message.id) // Ensure each message has a unique ID
+            Group {
+                if activityViewModel.activityViewPageState == .tripInSession {
+                    VStack {
+                        ScrollViewReader { scrollViewProxy in
+                            ScrollView {
+                                VStack(spacing: 8) {
+                                    ForEach(activityViewModel.mockData) { message in
+                                        MessageView(message: message)
+                                            .id(message.id) // Ensure each message has a unique ID
+                                    }
+                                }
+                            }
+                            .onChange(of: activityViewModel.mockData) { _ in
+                                if let lastMessage = activityViewModel.mockData.last {
+                                    withAnimation {
+                                        scrollViewProxy.scrollTo(lastMessage.id, anchor: .bottom)
+                                    }
+                                }
                             }
                         }
-                    }
-                    .onChange(of: chatViewModel.mockData) { _ in
-                        if let lastMessage = chatViewModel.mockData.last {
-                            withAnimation {
-                                scrollViewProxy.scrollTo(lastMessage.id, anchor: .bottom)
+                        HStack {
+                            TextField("Hello there", text: $text, axis: .vertical)
+                                .padding()
+                            Button {
+                                if text.count >= 2 {
+                                    activityViewModel.sendMessage(text: text)
+                                    text = ""
+                                }
+                            } label: {
+                                Text("Send")
+                                    .padding()
+                                    .foregroundColor(.white)
+                                    .background(Color.mint)
+                                    .cornerRadius(50)
+                                    .padding(.trailing)
                             }
                         }
+                        .background(Color(uiColor: .systemGray6))
                     }
+                    .padding([.top], 10)
+                } else if activityViewModel.activityViewPageState == .tripFinished {
+                    FinishedTripView()
+                } else if activityViewModel.activityViewPageState == .savingFinishedTrip {
+                    SavingTripView()
+                } else {
+                    InactiveView(activityViewModel: activityViewModel, tripDelegate: tripDelegate)
                 }
-                HStack {
-                    TextField("Hello there", text: $text, axis: .vertical)
-                        .padding()
-                    Button {
-                        if text.count >= 2 {
-                            chatViewModel.sendMessage(text: text)
-                            text = ""
-                        }
-                    } label: {
-                        Text("Send")
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color.mint)
-                            .cornerRadius(50)
-                            .padding(.trailing)
-                    }
-                }
-                .background(Color(uiColor: .systemGray6))
             }
-            .padding([.top], 10)
+            .background(
+                Image("tripSage") // Assuming "TripSage" is the name of your image asset
+                    .frame(height: UIScreen.main.bounds.width)
+                    .opacity(0.1) // Adjust the opacity as needed
+            )
+            .navigationTitle("")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarHidden(true)
         }
     }
 }
 
-struct ActivityView_Previews: PreviewProvider {
-    static var previews: some View {
-        ActivityView()
+
+struct FinishedTripView: View {
+    var body: some View {
+        Text("Trip Finished, hope you learnt a lot!")
+            .font(.largeTitle)
+            .padding()
+            .navigationTitle("Finished Trip")
     }
+}
+
+struct SavingTripView: View {
+    var body: some View {
+        Text("Saving Trip!")
+            .font(.largeTitle)
+            .padding()
+            .navigationTitle("Saving Trip")
+    }
+}
+
+protocol TripDelegate: AnyObject {
+    func userDidStartTrip()
+}
+
+
+#Preview {
+    ActivityView(activityViewModel: ActivityViewModel())
 }

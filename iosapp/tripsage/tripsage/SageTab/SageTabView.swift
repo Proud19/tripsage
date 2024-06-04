@@ -44,7 +44,8 @@ struct SageTabView: View {
     @State private var selectedIndex = 0
     private let tabTitles = ["What's Nearby", "Activity", "Profile"]
     
-    let user: User
+    var user: User?
+    @StateObject var sageTabViewModel = SageTabViewModel()
     
     private let sageIcon: UIImage =  {
         guard let image = Bundle.main.icon else { return UIImage() }
@@ -59,7 +60,7 @@ struct SageTabView: View {
     @EnvironmentObject var locationManager: LocationManager
     @StateObject private var keyboardResponder = KeyboardResponder()
     
-    init(user: User) {
+    init(user: User?) {
         UITabBar.appearance().backgroundColor = UIColor(Color.sage)
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
@@ -72,13 +73,20 @@ struct SageTabView: View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
+    
+    func didTapStopTrip() {
+        print("Stop trip button tapped")
+        sageTabViewModel.activityViewModel.didFinishTrip()
+        sageTabViewModel.userDidEndTrip()
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
                 CustomTabView(selectedIndex: $selectedIndex) {
                     ExploreView()
                         .tag(0)
-                    ActivityView()
+                    ActivityView(activityViewModel: sageTabViewModel.activityViewModel, tripDelegate: sageTabViewModel)
                         .tag(1)
                     AccountView()
                         .tag(2)
@@ -95,19 +103,17 @@ struct SageTabView: View {
                         ToolbarItem(placement: .principal) {
                             Text(tabTitles[selectedIndex])
                                 .font(.title)
-                                .bold()
                                 .foregroundColor(.white)
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             NavigationLink(destination: SettingsView()) {
                                 Image(systemName: "gearshape")
                                     .font(.title3)
-                                    .bold()
                                     .foregroundColor(.white)
                             }
                         }
                     } else if selectedIndex == 1 {
-                        if keyboardResponder.isKeyboardVisible {
+                        if keyboardResponder.isKeyboardVisible && sageTabViewModel.tripStarted {
                             ToolbarItem(placement: .navigationBarLeading) {
                                 Button(action: {
                                     hideKeyboard()
@@ -119,6 +125,46 @@ struct SageTabView: View {
                                 Image(uiImage: sageImage)
                                     .resizable()
                                     .frame(width: 40, height: 40)
+                            }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button(action: {
+                                    didTapStopTrip()
+                                }) {
+                                    Image(systemName: "stop.circle.fill")
+                                        .foregroundColor(.red)
+                                        .frame(width: 40, height: 40)
+                                    
+                                }
+                            }
+                        } else if sageTabViewModel.tripStarted {
+                            ToolbarItem(placement: .principal) {
+                                Image(uiImage: sageImage)
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                            }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button(action: {
+                                    didTapStopTrip()
+                                }) {
+                                    Image(systemName: "stop.circle.fill")
+                                        .foregroundColor(.red)
+                                        .frame(width: 40, height: 40)
+                                    
+                                }
+                            }
+                        }  else if keyboardResponder.isKeyboardVisible {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Button(action: {
+                                    hideKeyboard()
+                                }) {
+                                    Image(systemName: "arrow.backward")
+                                }
+                            }
+                            ToolbarItem(placement: .principal) {
+                                Image(uiImage: sageImage)
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                                
                             }
                         } else {
                             ToolbarItem(placement: .principal) {
@@ -136,7 +182,6 @@ struct SageTabView: View {
                         ToolbarItem(placement: .principal) {
                             Text(tabTitles[selectedIndex])
                                 .font(.title)
-                                .bold()
                                 .foregroundColor(.white)
                         }
                     }
@@ -177,7 +222,7 @@ struct CustomTabView<Content: View>: View {
     }
 
     var body: some View {
-        VStack {
+        VStack (spacing: 0) {
             TabView(selection: $selectedIndex) {
                         content
                         .overlay(

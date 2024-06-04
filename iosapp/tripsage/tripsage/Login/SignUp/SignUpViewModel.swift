@@ -9,6 +9,10 @@ import Foundation
 
 class SignUpViewModel {
     
+    
+    var loginViewModel = LoginViewModel()
+    var user: User?
+    
     func registerUser(firstName: String, lastName: String, emailAddress: String, password: String, completion: @escaping (Bool) -> Void) {
         // Define the URL and the request
         guard let url = URLProvider.registerUser else {
@@ -64,10 +68,17 @@ class SignUpViewModel {
                            let token = jsonResponse["access_token"] as? String
                          {
                             print("Access Token: \(token)")
-                           
                             KeyChainUtility.saveTokenToKeychain(token)
                             
-                            completion(true)
+                            self.loginViewModel.validateUser(username: emailAddress, password: password) { success in
+                                if success {
+                                    self.user = self.loginViewModel.user
+                                    completion(true)
+                                } else {
+                                    print("Could not retrieve the user")
+                                    completion(false)
+                                }
+                            }
                         } else {
                             print("Failed to parse JSON response")
                             completion(false)

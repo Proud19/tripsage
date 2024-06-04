@@ -94,4 +94,20 @@ class KeyChainUtility {
             return nil
         }
     }
+    
+    static func removeTokenFromKeychain() {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: "tripsageService",
+            kSecAttrAccount as String: "accessToken"
+        ]
+        
+        let status = SecItemDelete(query as CFDictionary)
+        
+        if status == errSecSuccess {
+            print("Token successfully removed from Keychain")
+        } else {
+            print("Error removing token from Keychain: \(status)")
+        }
+    }
 }

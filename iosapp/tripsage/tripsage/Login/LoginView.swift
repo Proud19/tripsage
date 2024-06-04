@@ -37,7 +37,7 @@ struct LoginView: View {
         return image
     }()
     
-    var loginViewModel = LoginViewModel()
+    @State var loginViewModel = LoginViewModel()
     
     var body: some View {
             VStack {
@@ -129,7 +129,7 @@ struct LoginView: View {
             }
             .padding()
             .background(
-                NavigationLink(destination: OnBoardingView(user: loginViewModel.user!), isActive: $loggedIn) {
+                NavigationLink(destination: OnBoardingView(user: loginViewModel.user ?? User.emptyUser()), isActive: $loginViewModel.userLoggedIn) {
                     EmptyView()
                 }
             )

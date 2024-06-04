@@ -51,7 +51,7 @@ struct MainEntryView: View {
                             .resizable()
                             .frame(width: 100, height: 100)
                             .cornerRadius(5.0)
-                            .scaleEffect(pulse ? 1.2 : 1.0)
+                            .scaleEffect(pulse ? 1.5 : 1.0)
                             .animation(
                                 Animation.easeInOut(duration: 2.0)
                                     .repeatForever(autoreverses: true),

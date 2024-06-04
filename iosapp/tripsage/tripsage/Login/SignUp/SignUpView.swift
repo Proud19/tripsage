@@ -105,7 +105,7 @@ struct SignUpView: View {
             }
             .padding()
             .background(
-                NavigationLink(destination: OnBoardingView(user: Mocker.generateMockUser()), isActive: $accountCreated) {
+                NavigationLink(destination: OnBoardingView(user: signUpViewModel.user ?? User.emptyUser()), isActive: $accountCreated) {
                     EmptyView()
                 }
             )

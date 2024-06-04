@@ -7,6 +7,7 @@ class LoginViewModel: ObservableObject {
     private let secretPassword = "sage"
     
     @Published var user: User?
+    @Published var userLoggedIn = false
     
     
     func validateUser(username: String, password: String, completion: @escaping (Bool) -> Void) {
@@ -39,27 +40,6 @@ class LoginViewModel: ObservableObject {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer " + token, forHTTPHeaderField: "Authorization")
         
-//        // Define the JSON payload
-//        let parameters: [String: Any] = [
-//            "emailAddress": username,
-//            "password": password,
-//        ]
-//        print("Converting payload to json data")
-//        // Convert the payload to JSON data
-//        do {
-//            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-//        } catch let error {
-//            print("Error: \(error.localizedDescription)")
-//            completion(false)
-//            return
-//        }
-        
-        
-        
-        
-//        guard let body = request.httpBody else { return }
-//        print("Request created, the request body is: \(body)")
-        
         // Create the data task
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             // Handle the response
@@ -87,6 +67,7 @@ class LoginViewModel: ObservableObject {
                     do {
                         if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] {
                             self.user = try JSONDecoder().decode(User.self, from: responseData)
+                            self.userLoggedIn = true
                             completion(true)
                         } else {
                             print("Failed to create user JSON response")
