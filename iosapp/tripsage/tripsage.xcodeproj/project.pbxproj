@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B57C6DC92C11047A00F693BC /* InterestsViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C6DC82C11047A00F693BC /* InterestsViewNew.swift */; };
 		BB7F98982BF1B16D0055A9D8 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7F98972BF1B16D0055A9D8 /* HeartButton.swift */; };
 		BBFD8C5D2BF183230076568D /* LandmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFD8C5C2BF183230076568D /* LandmarksView.swift */; };
 		FF0C1A442C052293007710E0 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A432C052293007710E0 /* MessageView.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B57C6DC82C11047A00F693BC /* InterestsViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsViewNew.swift; sourceTree = "<group>"; };
 		BB7F98972BF1B16D0055A9D8 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
 		BBFD8C5C2BF183230076568D /* LandmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksView.swift; sourceTree = "<group>"; };
 		FF0C1A432C052293007710E0 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				FFE0F6872BF499B100FD39D9 /* InterestsView.swift */,
+				B57C6DC82C11047A00F693BC /* InterestsViewNew.swift */,
 			);
 			path = Interests;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				FFE0F67E2BF2934200FD39D9 /* LoginViewModel.swift in Sources */,
 				FF0C1A572C094138007710E0 /* Mocker .swift in Sources */,
 				FF0C1A522C07D2A5007710E0 /* URLProvider .swift in Sources */,
+				B57C6DC92C11047A00F693BC /* InterestsViewNew.swift in Sources */,
 				FFE0D3BB2C0DB6B3004C9B2F /* SettingsView.swift in Sources */,
 				FF6AF1DC2C0FBB2E0067D569 /* ExploreViewModel.swift in Sources */,
 				FFE0D3C02C0E45DB004C9B2F /* KeyboardResponder.swift in Sources */,
