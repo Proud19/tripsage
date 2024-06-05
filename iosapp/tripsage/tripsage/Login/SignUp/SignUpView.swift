@@ -21,11 +21,14 @@ struct SignUpView: View {
         return image
     }()
     
-    var signUpViewModel = SignUpViewModel()
+    @StateObject var signUpViewModel = SignUpViewModel()
     
     var body: some View {
+        
+        if accountCreated && signUpViewModel.user != nil {
+            OnBoardingView(user: signUpViewModel.user!)
+        } else {
             VStack {
-                // Logo or title
                 VStack {
                     Text("Sign Up")
                         .font(.title)
@@ -33,32 +36,22 @@ struct SignUpView: View {
                     Image(uiImage: sageIcon)
                         .cornerRadius(5)
                 }
-                
-                // First name text field
                 TextField("First Name", text: $firstName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                     .disabled(pageState == .loading)
-                
-                // Last name text field
                 TextField("Last Name", text: $lastName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                     .disabled(pageState == .loading)
-                
-                // Email address text field
                 TextField("Email Address", text: $emailAddress)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                     .disabled(pageState == .loading)
-                
-                // Password text field
                 SecureField("Password", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                     .disabled(pageState == .loading)
-                
-                // Error message for invalid input
                 if pageState == .invalidCredentials {
                     Text("An error occurred in registering")
                         .foregroundColor(.red)
@@ -70,13 +63,12 @@ struct SignUpView: View {
                             }
                         }
                 }
-                
-                // Sign Up button
                 Button(action: {
                     pageState = .loading
                     signUpViewModel.registerUser(firstName: firstName, lastName: lastName, emailAddress: emailAddress, password: password) { success in
                         pageState = .normal
                         if success {
+                            print("Account successfuly created!")
                             accountCreated = true
                         } else {
                             pageState = .invalidCredentials
@@ -99,17 +91,11 @@ struct SignUpView: View {
                     }
                 }
                 .disabled(pageState == .loading)
-                
-                // Spacer to push content to the top
                 Spacer()
             }
             .padding()
-            .background(
-                NavigationLink(destination: OnBoardingView(user: signUpViewModel.user ?? User.emptyUser()), isActive: $accountCreated) {
-                    EmptyView()
-                }
-            )
         }
+    }
 }
 
 #Preview {

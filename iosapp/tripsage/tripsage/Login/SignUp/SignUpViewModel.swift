@@ -7,11 +7,11 @@
 
 import Foundation
 
-class SignUpViewModel {
+class SignUpViewModel: ObservableObject {
     
     
     var loginViewModel = LoginViewModel()
-    var user: User?
+    @Published var user: User?
     
     func registerUser(firstName: String, lastName: String, emailAddress: String, password: String, completion: @escaping (Bool) -> Void) {
         // Define the URL and the request
@@ -23,7 +23,6 @@ class SignUpViewModel {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
         // Define the JSON payload
         let parameters: [String: Any] = [
             "firstName": firstName,
@@ -69,8 +68,16 @@ class SignUpViewModel {
                          {
                             print("Access Token: \(token)")
                             KeyChainUtility.saveTokenToKeychain(token)
-                            self.user = self.loginViewModel.user
-                            completion(true)
+                            self.loginViewModel.validateUser(username: emailAddress, password: password) { success in
+                                if success {
+                                    print("Successfully retrived user information after signup")
+                                    self.user = self.loginViewModel.user
+                                    completion(true)
+                                } else {
+                                    print("Could not retrieve user information")
+                                    completion(false)
+                                }
+                            }
                         } else {
                             print("Failed to parse JSON response")
                             completion(false)

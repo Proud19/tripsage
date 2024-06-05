@@ -26,7 +26,8 @@ class MainEntryViewModel: ObservableObject {
     }
 
     func fetchUserProfile() {
-        guard let loginEndPoint = URLProvider.loginUser else {
+        print("Fetching user from the main entry view model")
+        guard let loginEndPoint = URLProvider.profile else {
             print("Error in getting endpoint to login the user")
             completion(false)
             return
