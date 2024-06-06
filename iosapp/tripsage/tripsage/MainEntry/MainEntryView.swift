@@ -67,7 +67,11 @@ struct MainEntryView: View {
                     }
                 } else {
                     if mainEntryViewModel.isSignedIn {
-                        OnBoardingView(user: self.$mainEntryViewModel.user.wrappedValue!) // TODO, not cool!!!!
+                        if mainEntryViewModel.needsOnBoarding {
+                            OnBoardingView(user: self.$mainEntryViewModel.user.wrappedValue!) // TODO, not cool!!!!
+                        } else {
+                            SageTabView(user: self.$mainEntryViewModel.user.wrappedValue!) // TODO, not cool 
+                        }
                     } else {
                         LoginView()
                     }

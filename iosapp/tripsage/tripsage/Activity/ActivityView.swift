@@ -23,21 +23,24 @@ struct InactiveView: View {
         VStack {
             MessageView(message: Message(userId: "", text: "Start a trip to hear what Sage has in store for you!", PhotoURL: "", createdAt: Date(), isFromUser: false))
             Spacer()
-            Button(action: {
-                activityViewModel.activityViewPageState = .tripInSession
-                tripDelegate?.userDidStartTrip()
-            }) {
-                Image(systemName: "play")
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.sageOrange)
-                    .clipShape(Circle())
-                    .scaleEffect(pulse ? 1.5 : 1.0)
-                    .animation(
-                        Animation.easeInOut(duration: 1)
-                            .repeatForever(autoreverses: true),
-                        value: pulse
-                    )
+            if activityViewModel.isLoadingForTripStart {
+                ProgressView("Starting Trip...")
+            } else {
+                Button(action: {
+                    activityViewModel.startTrip()
+                }) {
+                    Image(systemName: "play")
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color.sageOrange)
+                        .clipShape(Circle())
+                        .scaleEffect(pulse ? 1.5 : 1.0)
+                        .animation(
+                            Animation.easeInOut(duration: 1)
+                                .repeatForever(autoreverses: true),
+                            value: pulse
+                        )
+                }
             }
             Spacer().frame(height: 20)
         }
@@ -46,9 +49,6 @@ struct InactiveView: View {
             pulse = true
         }
         .padding()
-        .onAppear {
-            activityViewModel.serveInitialMessages()
-        }
     }
 }
 
@@ -89,7 +89,7 @@ struct ActivityView: View {
                                 .padding()
                             Button {
                                 if text.count >= 2 {
-                                    activityViewModel.sendMessage(text: text)
+                                    activityViewModel.postMessageToSage(text: text)
                                     text = ""
                                 }
                             } label: {
@@ -104,6 +104,9 @@ struct ActivityView: View {
                         .background(Color(uiColor: .systemGray6))
                     }
                     .padding([.top], 10)
+                    .onAppear {
+                        activityViewModel.requestForInitialMessages()
+                    }
                 } else if activityViewModel.activityViewPageState == .tripFinished {
                     FinishedTripView()
                 } else if activityViewModel.activityViewPageState == .savingFinishedTrip {

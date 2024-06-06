@@ -16,7 +16,7 @@ struct OnBoardingView: View {
     let user: User
     
     var body: some View {
-        if onBoardingViewModel.userNeedOnBoarding && !onBoardingViewModel.isLoading {
+        if onBoardingViewModel.userNeedOnBoarding && !onBoardingViewModel.isLoading && !onBoardingViewModel.navigateToNextView {
                 VStack {
                     Text("Hie \(user.firstName), Sage would like to know what you are interested in. You can update these in your profile settings later ")
                         .font(.title)
@@ -80,12 +80,6 @@ struct OnBoardingView: View {
                     .padding()
                 }
                 .padding()
-                .background(
-                    NavigationLink(destination: SageTabView(user: user).navigationBarBackButtonHidden(), isActive: $onBoardingViewModel.navigateToNextView) {
-                        EmptyView()
-                    }
-                )
-                
             } else if onBoardingViewModel.isLoading {
                 SageLoadingView()
             } else {

@@ -19,4 +19,11 @@ class URLProvider {
     static let nearby = URL(string: baseURL + "attractions/nearby")
     
     static let interests = URL(string: baseURL + "users/interests")
+    
+    static let beginTrip = URL(string: baseURL + "users/beginTrip")
+    
+    static let getTripResponse = URL(string: baseURL + "users/getTripResponse")
+    
+    static let addTripMessage = URL(string: baseURL + "users/addTripMessage")
+    
 }

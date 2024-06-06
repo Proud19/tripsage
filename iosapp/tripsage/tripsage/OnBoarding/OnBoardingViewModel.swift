@@ -19,8 +19,7 @@ class OnBoardingViewModel: ObservableObject {
     }
     
     func submitInterests(_ interests: [String]) {
-        
-        
+    
         guard let url = URLProvider.interests else {
             print("Invalid URL")
             return

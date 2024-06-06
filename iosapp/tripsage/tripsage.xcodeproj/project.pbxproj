@@ -216,9 +216,9 @@
 			isa = PBXGroup;
 			children = (
 				FFE0F66B2BEB6F6C00FD39D9 /* ActivityView.swift */,
+				FF6AF1D72C0EF4C50067D569 /* ActivityViewModel.swift */,
 				FF0C1A432C052293007710E0 /* MessageView.swift */,
 				FF0C1A452C0522BC007710E0 /* MessageViewModel.swift */,
-				FF6AF1D72C0EF4C50067D569 /* ActivityViewModel.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";

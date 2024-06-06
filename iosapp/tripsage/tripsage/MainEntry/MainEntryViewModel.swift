@@ -13,6 +13,9 @@ class MainEntryViewModel: ObservableObject {
     @Published var isSignedIn: Bool = false
     
     var user: User?
+    var needsOnBoarding = true // True until proven otherwise
+    
+    var interests = [String]()
     
     init() {
         fetchUserProfile()
@@ -76,7 +79,13 @@ class MainEntryViewModel: ObservableObject {
                     do {
                         if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] {
                             self.user = try JSONDecoder().decode(User.self, from: responseData)
-                            self.completion(true)
+                            print("Fetching user interests")
+                            User.fetchUserInterests { interests in
+                                print("Successfully fetched user interests")
+                                self.needsOnBoarding = interests.isEmpty
+                                self.completion(true)
+                            }
+            
                         } else {
                             print("Failed to create user JSON response")
                             self.completion(false)
