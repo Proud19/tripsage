@@ -13,6 +13,10 @@ class SageTabViewModel: ObservableObject, TripDelegate {
     
     var activityViewModel = ActivityViewModel()
     
+    init() {
+        activityViewModel.tripDelegate = self
+    }
+    
     func userDidStartTrip() {
         print("SageTabViewModel userDidStartTrip")
         tripStarted = true

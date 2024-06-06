@@ -28,17 +28,24 @@ class LoginViewModel: ObservableObject {
             return 
         }
         
-        guard let token = KeyChainUtility.retrieveTokenFromKeychain() else
-        {
-            print("Could not retrieve token")
+        var request = URLRequest(url: loginEndPoint)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.setValue("Bearer " + token, forHTTPHeaderField: "Authorization")
+        // Define the JSON payload
+        let parameters: [String: Any] = [
+            "emailAddress": username,
+            "password": password
+        ]
+        
+        // Convert the payload to JSON data
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        } catch let error {
+            print("Error: \(error.localizedDescription)")
             completion(false)
             return
         }
-        
-        var request = URLRequest(url: loginEndPoint)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer " + token, forHTTPHeaderField: "Authorization")
         
         // Create the data task
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -58,17 +65,26 @@ class LoginViewModel: ObservableObject {
             
             print("Got response: \(httpResponse)")
             // Check the HTTP status code
-            if httpResponse.statusCode == 200 {
+            if httpResponse.statusCode == 201 {
                 if let responseData = data {
                     // Print the response body
                     print("Response Body: \(String(data: responseData, encoding: .utf8) ?? "Unable to parse body")")
                     
                     // Parse the JSON response to extract the token
                     do {
-                        if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] {
-                            self.user = try JSONDecoder().decode(User.self, from: responseData)
-                            self.userLoggedIn = true
-                            completion(true)
+                        if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any],
+                            let token = jsonResponse["access_token"] as? String {
+                            KeyChainUtility.saveTokenToKeychain(token)
+                            User.fetchUserProfile { user in
+                                if let user = user {
+                                    self.user = user
+                                    self.userLoggedIn = true
+                                    completion(true)
+                                } else {
+                                    print("Could not fetch user for some reason")
+                                    completion(false)
+                                }
+                            }
                         } else {
                             print("Failed to create user JSON response")
                             completion(false)

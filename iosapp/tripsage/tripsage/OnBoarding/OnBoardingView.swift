@@ -11,13 +11,12 @@ struct OnBoardingView: View {
     
     @State private var interestInput: String = ""
     @State private var selectedInterests: [String] = []
-    @State private var onBoardingViewModel = OnBoardingViewModel()
-    @State private var isDoneAddingInterests = false
+    @StateObject private var onBoardingViewModel = OnBoardingViewModel()
     
     let user: User
     
     var body: some View {
-            if onBoardingViewModel.userNeedOnBoarding {
+        if onBoardingViewModel.userNeedOnBoarding && !onBoardingViewModel.isLoading && !onBoardingViewModel.navigateToNextView {
                 VStack {
                     Text("Hie \(user.firstName), Sage would like to know what you are interested in. You can update these in your profile settings later ")
                         .font(.title)
@@ -70,7 +69,7 @@ struct OnBoardingView: View {
                     .listStyle(PlainListStyle())
 
                     Button(action: {
-                        isDoneAddingInterests = true
+                        self.onBoardingViewModel.submitInterests(self.selectedInterests)
                     }) {
                         Text("Done")
                             .padding()
@@ -81,14 +80,10 @@ struct OnBoardingView: View {
                     .padding()
                 }
                 .padding()
-                .background(
-                    NavigationLink(destination: SageTabView(user: user).navigationBarBackButtonHidden(), isActive: $isDoneAddingInterests) {
-                        EmptyView()
-                    }
-                )
-                
+            } else if onBoardingViewModel.isLoading {
+                SageLoadingView()
             } else {
-                SageTabView(user: Mocker.generateMockUser())
+                SageTabView(user: user)
             }
         }
 }

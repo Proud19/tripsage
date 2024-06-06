@@ -14,8 +14,8 @@
             filePath = "tripsage/Login/SignUp/SignUpViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "registerUser(firstName:lastName:emailAddress:password:completion:)"
             landmarkType = "7">
             <Locations>
@@ -62,8 +62,8 @@
             filePath = "tripsage/Login/SignUp/SignUpViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "registerUser(firstName:lastName:emailAddress:password:completion:)"
             landmarkType = "7">
             <Locations>

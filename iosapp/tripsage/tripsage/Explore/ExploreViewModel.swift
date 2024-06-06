@@ -23,7 +23,12 @@ class ExploreViewModel: ObservableObject {
     
     
     init() {
-        fetchLandmarks(latitude: 40.712, longitude: -74.0060)
+        guard let location = LocationManager.shared.location else {
+            print("Could not get user location for exploreview")
+            return
+        }
+        print("Fetching landmarks from \(location.coordinate)")
+        fetchLandmarks(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
     }
 
     func fetchLandmarks(latitude: Double, longitude: Double) {

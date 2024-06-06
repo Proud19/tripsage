@@ -18,6 +18,7 @@
 		FF0C1A552C092B59007710E0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A542C092B59007710E0 /* User.swift */; };
 		FF0C1A572C094138007710E0 /* Mocker .swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A562C094138007710E0 /* Mocker .swift */; };
 		FF0C1A592C0ADB4D007710E0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A582C0ADB4D007710E0 /* LocationManager.swift */; };
+		FF24DC802C100BEA00238FCD /* SageLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF24DC7F2C100BEA00238FCD /* SageLoadingView.swift */; };
 		FF6AF1D62C0E8DB80067D569 /* SageTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF1D52C0E8DB80067D569 /* SageTabViewModel.swift */; };
 		FF6AF1D82C0EF4C50067D569 /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF1D72C0EF4C50067D569 /* ActivityViewModel.swift */; };
 		FF6AF1DA2C0F9D720067D569 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF1D92C0F9D720067D569 /* AppState.swift */; };
@@ -58,6 +59,7 @@
 		FF0C1A562C094138007710E0 /* Mocker .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mocker .swift"; sourceTree = "<group>"; };
 		FF0C1A582C0ADB4D007710E0 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF0C1A5A2C0AE5A6007710E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FF24DC7F2C100BEA00238FCD /* SageLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SageLoadingView.swift; sourceTree = "<group>"; };
 		FF6AF1D52C0E8DB80067D569 /* SageTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SageTabViewModel.swift; sourceTree = "<group>"; };
 		FF6AF1D72C0EF4C50067D569 /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		FF6AF1D92C0F9D720067D569 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -127,6 +129,14 @@
 			path = "Model ";
 			sourceTree = "<group>";
 		};
+		FF24DC7E2C100BCE00238FCD /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				FF24DC7F2C100BEA00238FCD /* SageLoadingView.swift */,
+			);
+			path = ViewComponents;
+			sourceTree = "<group>";
+		};
 		FF82EAE42BEADD4300738DF8 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +158,7 @@
 			children = (
 				FF0C1A5A2C0AE5A6007710E0 /* Info.plist */,
 				FF82EAF02BEADD4300738DF8 /* tripsageApp.swift */,
+				FF24DC7E2C100BCE00238FCD /* ViewComponents */,
 				FF0C1A532C092B35007710E0 /* Model  */,
 				FF0C1A4E2C07A43B007710E0 /* Utilities */,
 				FFE0F6782BF2908700FD39D9 /* OnBoarding */,
@@ -194,9 +205,9 @@
 			isa = PBXGroup;
 			children = (
 				FFE0F66D2BEB6F7B00FD39D9 /* ExploreView.swift */,
+				FF6AF1DB2C0FBB2E0067D569 /* ExploreViewModel.swift */,
 				BB7F98972BF1B16D0055A9D8 /* HeartButton.swift */,
 				BBFD8C5C2BF183230076568D /* LandmarksView.swift */,
-				FF6AF1DB2C0FBB2E0067D569 /* ExploreViewModel.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -205,9 +216,9 @@
 			isa = PBXGroup;
 			children = (
 				FFE0F66B2BEB6F6C00FD39D9 /* ActivityView.swift */,
+				FF6AF1D72C0EF4C50067D569 /* ActivityViewModel.swift */,
 				FF0C1A432C052293007710E0 /* MessageView.swift */,
 				FF0C1A452C0522BC007710E0 /* MessageViewModel.swift */,
-				FF6AF1D72C0EF4C50067D569 /* ActivityViewModel.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -370,6 +381,7 @@
 				FFE0F67C2BF290D900FD39D9 /* LoginView.swift in Sources */,
 				FF0C1A4D2C071B68007710E0 /* KeyChainUtility.swift in Sources */,
 				FF0C1A552C092B59007710E0 /* User.swift in Sources */,
+				FF24DC802C100BEA00238FCD /* SageLoadingView.swift in Sources */,
 				FFE0F6822BF4990A00FD39D9 /* AccountViewModel .swift in Sources */,
 				FFE0F66E2BEB6F7B00FD39D9 /* ExploreView.swift in Sources */,
 				BBFD8C5D2BF183230076568D /* LandmarksView.swift in Sources */,
