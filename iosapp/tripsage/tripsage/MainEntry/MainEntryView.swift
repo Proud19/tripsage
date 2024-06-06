@@ -78,6 +78,7 @@ struct MainEntryView: View {
                 }
             }
         }
+        .environmentObject(mainEntryViewModel)
     }
 }
 

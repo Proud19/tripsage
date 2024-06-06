@@ -10,7 +10,7 @@ import SwiftUI
 struct HistoryView: View {
     var historyViewModel = HistoryViewModel()
     var body: some View {
-        VStack (spacing: 10) {
+        VStack (alignment: .leading, spacing: 10) {
             Text("History")
                 .bold()
             HStack {

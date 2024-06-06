@@ -40,6 +40,14 @@ struct LoginView: View {
     @State var loginViewModel = LoginViewModel()
     
     var body: some View {
+        
+        if loginViewModel.userLoggedIn {
+            if loginViewModel.needsOnBoarding {
+                OnBoardingView(user: loginViewModel.user ?? User.emptyUser())
+            } else {
+                SageTabView(user: loginViewModel.user)
+            }
+        } else {
             VStack {
                 // Logo or title
                 VStack {
@@ -128,11 +136,7 @@ struct LoginView: View {
                 Spacer()
             }
             .padding()
-            .background(
-                NavigationLink(destination: OnBoardingView(user: loginViewModel.user ?? User.emptyUser()), isActive: $loginViewModel.userLoggedIn) {
-                    EmptyView()
-                }
-            )
+        }
     }
 }
 

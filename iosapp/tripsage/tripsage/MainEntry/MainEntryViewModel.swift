@@ -9,6 +9,7 @@ import Foundation
 
 
 class MainEntryViewModel: ObservableObject {
+    
     @Published var isLoading: Bool = true
     @Published var isSignedIn: Bool = false
     

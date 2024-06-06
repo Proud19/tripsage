@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B57C6DC92C11047A00F693BC /* InterestsViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C6DC82C11047A00F693BC /* InterestsViewNew.swift */; };
+		B57C6DC92C11047A00F693BC /* InterestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C6DC82C11047A00F693BC /* InterestsView.swift */; };
 		BB7F98982BF1B16D0055A9D8 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7F98972BF1B16D0055A9D8 /* HeartButton.swift */; };
 		BBFD8C5D2BF183230076568D /* LandmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFD8C5C2BF183230076568D /* LandmarksView.swift */; };
 		FF0C1A442C052293007710E0 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A432C052293007710E0 /* MessageView.swift */; };
@@ -20,6 +20,7 @@
 		FF0C1A572C094138007710E0 /* Mocker .swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A562C094138007710E0 /* Mocker .swift */; };
 		FF0C1A592C0ADB4D007710E0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A582C0ADB4D007710E0 /* LocationManager.swift */; };
 		FF24DC802C100BEA00238FCD /* SageLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF24DC7F2C100BEA00238FCD /* SageLoadingView.swift */; };
+		FF4CB4F52C12653A00161D8D /* InterestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4CB4F42C12653A00161D8D /* InterestsViewModel.swift */; };
 		FF6AF1D62C0E8DB80067D569 /* SageTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF1D52C0E8DB80067D569 /* SageTabViewModel.swift */; };
 		FF6AF1D82C0EF4C50067D569 /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF1D72C0EF4C50067D569 /* ActivityViewModel.swift */; };
 		FF6AF1DA2C0F9D720067D569 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF1D92C0F9D720067D569 /* AppState.swift */; };
@@ -43,12 +44,11 @@
 		FFE0F6802BF2975B00FD39D9 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0F67F2BF2975B00FD39D9 /* OnBoardingViewModel.swift */; };
 		FFE0F6822BF4990A00FD39D9 /* AccountViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0F6812BF4990A00FD39D9 /* AccountViewModel .swift */; };
 		FFE0F6862BF4999F00FD39D9 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0F6852BF4999F00FD39D9 /* HistoryView.swift */; };
-		FFE0F6882BF499B100FD39D9 /* InterestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0F6872BF499B100FD39D9 /* InterestsView.swift */; };
 		FFE0F68A2BF4A50B00FD39D9 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0F6892BF4A50B00FD39D9 /* HistoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B57C6DC82C11047A00F693BC /* InterestsViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsViewNew.swift; sourceTree = "<group>"; };
+		B57C6DC82C11047A00F693BC /* InterestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsView.swift; sourceTree = "<group>"; };
 		BB7F98972BF1B16D0055A9D8 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
 		BBFD8C5C2BF183230076568D /* LandmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksView.swift; sourceTree = "<group>"; };
 		FF0C1A432C052293007710E0 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
@@ -62,6 +62,7 @@
 		FF0C1A582C0ADB4D007710E0 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF0C1A5A2C0AE5A6007710E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FF24DC7F2C100BEA00238FCD /* SageLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SageLoadingView.swift; sourceTree = "<group>"; };
+		FF4CB4F42C12653A00161D8D /* InterestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsViewModel.swift; sourceTree = "<group>"; };
 		FF6AF1D52C0E8DB80067D569 /* SageTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SageTabViewModel.swift; sourceTree = "<group>"; };
 		FF6AF1D72C0EF4C50067D569 /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		FF6AF1D92C0F9D720067D569 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -86,7 +87,6 @@
 		FFE0F67F2BF2975B00FD39D9 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
 		FFE0F6812BF4990A00FD39D9 /* AccountViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountViewModel .swift"; sourceTree = "<group>"; };
 		FFE0F6852BF4999F00FD39D9 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		FFE0F6872BF499B100FD39D9 /* InterestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsView.swift; sourceTree = "<group>"; };
 		FFE0F6892BF4A50B00FD39D9 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,8 +268,8 @@
 		FFE0F6832BF4993800FD39D9 /* Interests */ = {
 			isa = PBXGroup;
 			children = (
-				FFE0F6872BF499B100FD39D9 /* InterestsView.swift */,
-				B57C6DC82C11047A00F693BC /* InterestsViewNew.swift */,
+				B57C6DC82C11047A00F693BC /* InterestsView.swift */,
+				FF4CB4F42C12653A00161D8D /* InterestsViewModel.swift */,
 			);
 			path = Interests;
 			sourceTree = "<group>";
@@ -353,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF4CB4F52C12653A00161D8D /* InterestsViewModel.swift in Sources */,
 				FFE0D3B82C0D8B17004C9B2F /* NetworkManager.swift in Sources */,
 				FFE0F6702BEB6F8A00FD39D9 /* AccountView.swift in Sources */,
 				FFE0F6802BF2975B00FD39D9 /* OnBoardingViewModel.swift in Sources */,
@@ -368,7 +369,6 @@
 				FF6AF1D82C0EF4C50067D569 /* ActivityViewModel.swift in Sources */,
 				FFE0F6752BF28D2800FD39D9 /* MainEntryViewModel.swift in Sources */,
 				FF82EAF12BEADD4300738DF8 /* tripsageApp.swift in Sources */,
-				FFE0F6882BF499B100FD39D9 /* InterestsView.swift in Sources */,
 				FF0C1A592C0ADB4D007710E0 /* LocationManager.swift in Sources */,
 				FF0C1A442C052293007710E0 /* MessageView.swift in Sources */,
 				FF0C1A4B2C06CDF3007710E0 /* SignUpViewModel.swift in Sources */,
@@ -378,7 +378,7 @@
 				FFE0F67E2BF2934200FD39D9 /* LoginViewModel.swift in Sources */,
 				FF0C1A572C094138007710E0 /* Mocker .swift in Sources */,
 				FF0C1A522C07D2A5007710E0 /* URLProvider .swift in Sources */,
-				B57C6DC92C11047A00F693BC /* InterestsViewNew.swift in Sources */,
+				B57C6DC92C11047A00F693BC /* InterestsView.swift in Sources */,
 				FFE0D3BB2C0DB6B3004C9B2F /* SettingsView.swift in Sources */,
 				FF6AF1DC2C0FBB2E0067D569 /* ExploreViewModel.swift in Sources */,
 				FFE0D3C02C0E45DB004C9B2F /* KeyboardResponder.swift in Sources */,

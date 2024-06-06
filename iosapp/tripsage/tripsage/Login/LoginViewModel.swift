@@ -9,6 +9,7 @@ class LoginViewModel: ObservableObject {
     @Published var user: User?
     @Published var userLoggedIn = false
     
+    var needsOnBoarding = true // True until proven otherwise
     
     func validateUser(username: String, password: String, completion: @escaping (Bool) -> Void) {
         // Define the URL and the request
@@ -77,9 +78,12 @@ class LoginViewModel: ObservableObject {
                             KeyChainUtility.saveTokenToKeychain(token)
                             User.fetchUserProfile { user in
                                 if let user = user {
-                                    self.user = user
-                                    self.userLoggedIn = true
-                                    completion(true)
+                                    User.fetchUserInterests { interests in
+                                        self.user = user
+                                        self.needsOnBoarding = interests.isEmpty
+                                        self.userLoggedIn = true
+                                        completion(true)
+                                    }
                                 } else {
                                     print("Could not fetch user for some reason")
                                     completion(false)

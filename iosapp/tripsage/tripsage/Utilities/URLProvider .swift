@@ -26,4 +26,6 @@ class URLProvider {
     
     static let addTripMessage = URL(string: baseURL + "users/addTripMessage")
     
+    static let podcasts = URL(string: baseURL + "/attractions/podcasts")
+    
 }

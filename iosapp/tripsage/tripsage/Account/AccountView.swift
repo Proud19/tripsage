@@ -10,9 +10,8 @@ import SwiftUI
 struct AccountView: View {
     var body: some View {
         ScrollView {
-          
-            InterestsViewNew(items: ["SwiftUI", "CS194W", "Stanford", "Proud Mpala", "Jason Chao", "Raghav Garg", "ice cream", "sushi"])
-                .frame(height: 200)
+            InterestsView()
+            Divider()
             HistoryView()
         }.padding(10)
     }

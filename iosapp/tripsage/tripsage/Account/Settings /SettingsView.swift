@@ -10,13 +10,17 @@ import SwiftUI
 struct SettingsView: View {
     @StateObject private var viewModel = SettingsViewModel()
     @EnvironmentObject var appState: AppState
+    
+    @EnvironmentObject var mainEntryVieModel: MainEntryViewModel
 
     var body: some View {
         VStack {
             Spacer()
 
             Button(action: {
-                appState.logout()
+                self.mainEntryVieModel.isSignedIn = false
+                KeyChainUtility.removeTokenFromKeychain()
+                    
             }) {
                 Text("Logout")
                     .font(.headline)

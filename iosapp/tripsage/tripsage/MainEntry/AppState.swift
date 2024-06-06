@@ -13,7 +13,6 @@ class AppState: ObservableObject {
     @Published var isAuthenticated: Bool = false
     
     func logout() {
-        KeyChainUtility.removeTokenFromKeychain()
         isAuthenticated = false
     }
     

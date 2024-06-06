@@ -1,98 +1,79 @@
 //
-//  InterestsView.swift
+//  InterestsViewNew.swift
 //  tripsage
 //
-//  Created by Proud Mpala on 5/15/24.
+//  Created by Emma Catherine Wong on 6/5/24.
 //
-
-/* TODO: Need a wrapping hstack to prsent the interests! */
 
 import SwiftUI
 
 struct InterestsView: View {
-    @State private var interests1 = ["SwiftUI", "iOS Development"]
-    @State private var interests2 = [ "Machine Learning", "Gaming", "Cooking"]
-    @State private var interests3 = [ "Soccer", "rocks", "gymn"]
     
-    var body: some View {
-        VStack(spacing: 10) {
-            Text("Interests")
-                .bold()
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.black, lineWidth: 1)
-                .overlay(
-                    VStack {
-                        HStack(spacing: 8) {
-                            ForEach(interests1, id: \.self) { interest in
-                                PillView(text: interest, color: .random(), onDelete: {
-                                    if let index = interests1.firstIndex(of: interest) {
-                                        interests1.remove(at: index)
-                                    }
-                                })
-                            }
-                        }
-                        .padding(8)
-                        
-                        HStack(spacing: 8) {
-                            ForEach(interests2, id: \.self) { interest in
-                                PillView(text: interest, color: .random(), onDelete: {
-                                    if let index = interests2.firstIndex(of: interest) {
-                                        interests2.remove(at: index)
-                                    }
-                                })
-                            }
-                        }
-                        .padding(8)
-                        
-                        HStack(spacing: 8) {
-                            ForEach(interests3, id: \.self) { interest in
-                                PillView(text: interest, color: .random(), onDelete: {
-                                    if let index = interests3.firstIndex(of: interest) {
-                                        interests3.remove(at: index)
-                                    }
-                                })
-                            }
-                        }
-                        .padding(8)
-                    }
-                )
-        }
-    }
-}
-
-struct PillView: View {
-    var text: String
-    var color: Color
-    var onDelete: () -> Void
+    let screenWidth = UIScreen.main.bounds.width
     
-    var body: some View {
-        HStack {
-            Text(text)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 5)
-                .lineLimit(1)
+    @StateObject var interestsViewModel = InterestsViewModel()
+    
+    private func createGroupedItems(_ items: [String]) -> [[String]] {
+        
+        var groupedItems: [[String]] = [[String]]()
+        var tempItems: [String] =  [String]()
+        var width: CGFloat = 0
+        
+        for word in items {
             
-            Button(action: onDelete) {
-                Image(systemName: "x.circle.fill")
-                    .foregroundColor(.red)
+            let label = UILabel()
+            label.text = word
+            label.sizeToFit()
+            
+            let labelWidth = label.frame.size.width + 20
+            
+            if (width + labelWidth + 55) < screenWidth {
+                width += labelWidth
+                tempItems.append(word)
+            } else {
+                width = labelWidth
+                groupedItems.append(tempItems)
+                tempItems.removeAll()
+                tempItems.append(word)
             }
+            
         }
-        .background(color)
-        .cornerRadius(12)
-        .foregroundColor(.white)
+        
+        groupedItems.append(tempItems)
+        return groupedItems
+        
+    }
+    
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading) {
+                // Add heading here
+                Text("Interests")
+                    .font(.headline)
+                    .padding(.bottom, 10)
+                ForEach(createGroupedItems(interestsViewModel.interests), id: \.self) { subItems in
+                    HStack {
+                        ForEach(subItems, id: \.self) { word in
+                            Text(word)
+                                .fixedSize()
+                                .padding()
+                                .frame(height: 30)
+                                .background(Color.sageOrange)
+                                .foregroundColor(.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 100.0, style: .continuous))
+                        }
+                    }
+                }
+                
+                Spacer()
+            }
+            .padding()
+        }
     }
 }
 
-extension Color {
-    static func random() -> Color {
-        return Color(
-            red: Double.random(in: 0...1),
-            green: Double.random(in: 0...1),
-            blue: Double.random(in: 0...1)
-        )
+struct InterestsViewNew_Previews: PreviewProvider {
+    static var previews: some View {
+        InterestsView()
     }
-}
-
-#Preview {
-    InterestsView()
 }
