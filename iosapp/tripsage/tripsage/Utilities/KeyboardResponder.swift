@@ -16,17 +16,17 @@ class KeyboardResponder: ObservableObject {
     init() {
         NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)
             .sink { [weak self] _ in
-                DispatchQueue.main.async {
+               
                     self?.isKeyboardVisible = true
-                }
+                
             }
             .store(in: &cancellables)
 
         NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)
             .sink { [weak self] _ in
-                DispatchQueue.main.async {
-                    self?.isKeyboardVisible = true
-                }
+              
+                    self?.isKeyboardVisible = false
+                
             }
             .store(in: &cancellables)
     }
