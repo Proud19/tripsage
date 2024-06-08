@@ -65,6 +65,7 @@ struct SageTabView: View {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().tintColor = .white
+        UITabBar.appearance().isHidden = true
         self.user = user
     }
     
@@ -81,7 +82,7 @@ struct SageTabView: View {
     }
     
     var body: some View {
-        NavigationView {
+        Group {
             ZStack {
                 CustomTabView(selectedIndex: $selectedIndex) {
                     ExploreView()
@@ -187,12 +188,7 @@ struct SageTabView: View {
                     }
                 }
                 .navigationBarBackground(.sage)
-                .onAppear {
-                    UITabBar.appearance().isHidden = true
-                    UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-                    UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-                    UINavigationBar.appearance().tintColor = .white
-                }
+       
                 
                 if keyboardResponder.isKeyboardVisible {
                     Color.clear
