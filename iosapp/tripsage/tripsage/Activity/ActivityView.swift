@@ -61,6 +61,8 @@ struct ActivityView: View {
     
     var tripDelegate: TripDelegate?
     
+    @State var fetchedInitialMessages = false
+    
     
     var body: some View {
         NavigationView {
@@ -105,7 +107,10 @@ struct ActivityView: View {
                     }
                     .padding([.top], 10)
                     .onAppear {
-                        activityViewModel.requestForInitialMessages()
+                        if !fetchedInitialMessages {
+                            activityViewModel.requestForInitialMessages()
+                            fetchedInitialMessages = true
+                        }
                     }
                 } else if activityViewModel.activityViewPageState == .tripFinished {
                     FinishedTripView()
