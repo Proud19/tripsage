@@ -21,6 +21,9 @@
 		FF0C1A592C0ADB4D007710E0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0C1A582C0ADB4D007710E0 /* LocationManager.swift */; };
 		FF24DC802C100BEA00238FCD /* SageLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF24DC7F2C100BEA00238FCD /* SageLoadingView.swift */; };
 		FF4CB4F52C12653A00161D8D /* InterestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4CB4F42C12653A00161D8D /* InterestsViewModel.swift */; };
+		FF4CB4F72C12818400161D8D /* AudioUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4CB4F62C12818400161D8D /* AudioUtilities.swift */; };
+		FF4CB4F92C1281ED00161D8D /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4CB4F82C1281ED00161D8D /* AudioPlayerView.swift */; };
+		FF4CB4FB2C12824400161D8D /* AudioPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4CB4FA2C12824400161D8D /* AudioPlayerViewModel.swift */; };
 		FF6AF1D62C0E8DB80067D569 /* SageTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF1D52C0E8DB80067D569 /* SageTabViewModel.swift */; };
 		FF6AF1D82C0EF4C50067D569 /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF1D72C0EF4C50067D569 /* ActivityViewModel.swift */; };
 		FF6AF1DA2C0F9D720067D569 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF1D92C0F9D720067D569 /* AppState.swift */; };
@@ -63,6 +66,9 @@
 		FF0C1A5A2C0AE5A6007710E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FF24DC7F2C100BEA00238FCD /* SageLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SageLoadingView.swift; sourceTree = "<group>"; };
 		FF4CB4F42C12653A00161D8D /* InterestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsViewModel.swift; sourceTree = "<group>"; };
+		FF4CB4F62C12818400161D8D /* AudioUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioUtilities.swift; sourceTree = "<group>"; };
+		FF4CB4F82C1281ED00161D8D /* AudioPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerView.swift; sourceTree = "<group>"; };
+		FF4CB4FA2C12824400161D8D /* AudioPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewModel.swift; sourceTree = "<group>"; };
 		FF6AF1D52C0E8DB80067D569 /* SageTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SageTabViewModel.swift; sourceTree = "<group>"; };
 		FF6AF1D72C0EF4C50067D569 /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		FF6AF1D92C0F9D720067D569 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 				FF0C1A582C0ADB4D007710E0 /* LocationManager.swift */,
 				FFE0D3B72C0D8B17004C9B2F /* NetworkManager.swift */,
 				FFE0D3BF2C0E45DB004C9B2F /* KeyboardResponder.swift */,
+				FF4CB4F62C12818400161D8D /* AudioUtilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -210,6 +217,8 @@
 				FF6AF1DB2C0FBB2E0067D569 /* ExploreViewModel.swift */,
 				BB7F98972BF1B16D0055A9D8 /* HeartButton.swift */,
 				BBFD8C5C2BF183230076568D /* LandmarksView.swift */,
+				FF4CB4F82C1281ED00161D8D /* AudioPlayerView.swift */,
+				FF4CB4FA2C12824400161D8D /* AudioPlayerViewModel.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -373,7 +382,9 @@
 				FF0C1A442C052293007710E0 /* MessageView.swift in Sources */,
 				FF0C1A4B2C06CDF3007710E0 /* SignUpViewModel.swift in Sources */,
 				FFE0D3BD2C0DB6E2004C9B2F /* SettingsViewModel.swift in Sources */,
+				FF4CB4F72C12818400161D8D /* AudioUtilities.swift in Sources */,
 				FF0C1A462C0522BC007710E0 /* MessageViewModel.swift in Sources */,
+				FF4CB4FB2C12824400161D8D /* AudioPlayerViewModel.swift in Sources */,
 				FF0C1A492C06CD70007710E0 /* SignUpView.swift in Sources */,
 				FFE0F67E2BF2934200FD39D9 /* LoginViewModel.swift in Sources */,
 				FF0C1A572C094138007710E0 /* Mocker .swift in Sources */,
@@ -382,6 +393,7 @@
 				FFE0D3BB2C0DB6B3004C9B2F /* SettingsView.swift in Sources */,
 				FF6AF1DC2C0FBB2E0067D569 /* ExploreViewModel.swift in Sources */,
 				FFE0D3C02C0E45DB004C9B2F /* KeyboardResponder.swift in Sources */,
+				FF4CB4F92C1281ED00161D8D /* AudioPlayerView.swift in Sources */,
 				FFE0F67C2BF290D900FD39D9 /* LoginView.swift in Sources */,
 				FF0C1A4D2C071B68007710E0 /* KeyChainUtility.swift in Sources */,
 				FF0C1A552C092B59007710E0 /* User.swift in Sources */,

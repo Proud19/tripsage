@@ -8,12 +8,16 @@
 import SwiftUI
 import Combine
 
+struct MusicData: Decodable {
+    let base64EncodedMP3: String
+}
+
 struct Landmark: Identifiable, Decodable, Hashable {
     let id: String
     let name: String
     let description: String
     let photoUrls: [String]
-    let address: String
+    let address: String    
 }
 
 class ExploreViewModel: ObservableObject {

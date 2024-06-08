@@ -42,11 +42,7 @@ struct LoginView: View {
     var body: some View {
         
         if loginViewModel.userLoggedIn {
-            if loginViewModel.needsOnBoarding {
-                OnBoardingView(user: loginViewModel.user ?? User.emptyUser())
-            } else {
-                SageTabView(user: loginViewModel.user)
-            }
+            MainEntryView()
         } else {
             VStack {
                 // Logo or title
@@ -126,8 +122,8 @@ struct LoginView: View {
                 .padding(.top, 10)
                 
                 // Button to sign up
-                NavigationLink(destination: SignUpView()) {
-                    Text("Do not have an account, sign up instead")
+                NavigationLink(destination: SignUpView().navigationBarBackButtonHidden(true)) {
+                    Text("Do not have an account, sign up instead!")
                         .foregroundColor(.blue)
                         .padding(.top, 20)
                 }

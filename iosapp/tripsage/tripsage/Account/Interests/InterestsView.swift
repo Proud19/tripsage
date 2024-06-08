@@ -45,12 +45,15 @@ struct InterestsView: View {
     }
     
     var body: some View {
-        ScrollView {
             VStack(alignment: .leading) {
                 // Add heading here
-                Text("Interests")
-                    .font(.headline)
-                    .padding(.bottom, 10)
+                HStack {
+                    Text("Interests")
+                        .font(.headline)
+                        .padding(.bottom, 10)
+                    Spacer()
+                }.padding([.top, .leading])
+                Divider()
                 ForEach(createGroupedItems(interestsViewModel.interests), id: \.self) { subItems in
                     HStack {
                         ForEach(subItems, id: \.self) { word in
@@ -62,13 +65,17 @@ struct InterestsView: View {
                                 .foregroundColor(.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 100.0, style: .continuous))
                         }
-                    }
+                    }.padding()
                 }
                 
                 Spacer()
             }
-            .padding()
-        }
+            .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.25)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.black, lineWidth: 2) // Adding border color and width
+            )
+
     }
 }
 

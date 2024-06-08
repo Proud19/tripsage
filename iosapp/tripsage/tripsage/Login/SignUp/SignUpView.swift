@@ -26,7 +26,7 @@ struct SignUpView: View {
     var body: some View {
         
         if accountCreated && signUpViewModel.user != nil {
-            OnBoardingView(user: signUpViewModel.user!)
+            MainEntryView()
         } else {
             VStack {
                 VStack {

@@ -7,41 +7,70 @@
 
 import SwiftUI
 
+struct AutoScrollingTabView: View {
+    @State private var currentIndex = 0
+    private let images = ["exp-1", "exp-2", "exp-3", "exp-4"]
+    private let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+
+    var body: some View {
+        TabView(selection: $currentIndex) {
+            ForEach(0..<images.count) { index in
+                Image(images[index])
+                    .resizable()
+                    .scaledToFill()
+                    .tag(index)
+            }
+        }
+        .tabViewStyle(PageTabViewStyle())
+        .onReceive(timer) { _ in
+            withAnimation {
+                currentIndex = (currentIndex + 1) % images.count
+            }
+        }
+    }
+}
+
 struct HistoryView: View {
     var historyViewModel = HistoryViewModel()
     var body: some View {
-        VStack (alignment: .leading, spacing: 10) {
+        VStack (alignment: .leading, spacing: 0) {
             Text("History")
                 .bold()
-            HStack {
-                Spacer()
-                VStack {
-                    Text(historyViewModel.numberOfPastTrips.description).font(.title).bold()
-                    Text("Past Trips").font(.caption)
-                    
-                }.padding([.leading, .trailing], 10)
-                VStack {
-                    Text(historyViewModel.numberOfLandMarks.description).font(.title).bold()
-                    Text("Landmarks").font(.caption)
-                    
-                }
-                VStack {
-                    HStack {
-                        Text(historyViewModel.totalDistance.description).font(.title).bold()
-                        Text("km").italic()
+                .padding()
+            Divider()
+            VStack {
+                
+                AutoScrollingTabView()
+                    .frame(height: UIScreen.main.bounds.height * 0.3)
+                HStack {
+                    Spacer()
+                    VStack {
+                        Text(historyViewModel.numberOfPastTrips.description).font(.title).bold()
+                        Text("Past Trips").font(.caption)
+                        
+                    }.padding([.leading, .trailing], 10)
+                    VStack {
+                        Text(historyViewModel.numberOfLandMarks.description).font(.title).bold()
+                        Text("Landmarks").font(.caption)
                         
                     }
-                    Text("Travelled").font(.caption)
-                }.padding([.trailing], 10)
-                Spacer()
+                    VStack {
+                        HStack {
+                            Text(historyViewModel.totalDistance.description).font(.title).bold()
+                            Text("km").italic()
+                            
+                        }
+                        Text("Travelled").font(.caption)
+                    }.padding([.trailing], 10)
+                    Spacer()
+                }
             }
-            .background(.gray)
-            .cornerRadius(12)
-            .foregroundColor(.white)
-            
-
         }
-        
+        .frame(width: UIScreen.main.bounds.width * 0.9)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.black, lineWidth: 2) // Adding border color and width
+        )
     }
 }
 

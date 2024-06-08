@@ -41,9 +41,15 @@ class ActivityViewModel: ObservableObject {
             return
         }
         
-        let message = "Tell me a fun fact about anything nearby. I'm at the location \(location.coordinate) "
+        let message = "Tell me a fun fact about anything nearby."
         
-        sendMessageForResponse(text: message) { response in
+        
+        var modifiedText = !self.userInterests.isEmpty ? "I like \(self.userInterests) and I'm at the \(location.coordinate) and Im am interested in \(self.userInterests), and \(message)" : message
+        
+        print(modifiedText)
+        modifiedText += " KEEP YOUR RESPONSE TO PARAGRAPH FORM AND LESS THAN 100 WORDS."
+        
+        sendMessageForResponse(text: modifiedText) { response in
             if !response.isEmpty {
                 DispatchQueue.main.async {
                     self.mockData.append(Message(userId: "", text: response, PhotoURL: "", createdAt: Date(), isFromUser: false))
@@ -60,6 +66,7 @@ class ActivityViewModel: ObservableObject {
     }
     
     func sendMessage(text: String, interests: [String]) {
+        print("Here!!!!!!!")
         if !text.isEmpty {
             DispatchQueue.main.async {
                 self.mockData.append(Message(userId: "", text: text, PhotoURL: "", createdAt: Date(), isFromUser: true))
@@ -76,9 +83,12 @@ class ActivityViewModel: ObservableObject {
             return
         }
         
-        var modifiedText = interests.isEmpty ? "Hi, here is my message to you: \(text). \n\nI'm at the location \(location.coordinate) and Im am interested in \(interests), make your response relevant to the previous messaege as well as strongly take into account my interests" : text
+//        var modifiedText = interests.isEmpty ? "Hi, here is my message to you: \(text). \n\nI'm at the location \(location.coordinate) and Im am interested in \(interests), make your response relevant to the previous messaege as well as strongly take into account my interests" : text
+        var modifiedText = !interests.isEmpty ? "I like \(interests) and I'm at the \(location.coordinate) and Im am interested in \(interests), and \(text)" : text
         
+        print("The prompt is: \(modifiedText)")
         
+        modifiedText += " KEEP YOUR RESPONSE TO PARAGRAPH FORM AND LESS THAN 100 WORDS."
         
         sendMessageForResponse(text: modifiedText) { response in
             print("user interests are \(interests), gettting response")

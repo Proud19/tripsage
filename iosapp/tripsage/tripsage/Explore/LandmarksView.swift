@@ -1,17 +1,33 @@
 import SwiftUI
 
 struct LandmarksView: View {
-    let landmark: Landmark
+    var landmark: Landmark
+    var masterPlayer: MasterPlayerState?
+    
+    
+    init(landmark: Landmark, masterPlayer: MasterPlayerState? = nil) {
+        self.masterPlayer = masterPlayer
+        self.landmark = landmark
+    }
 
     var body: some View {
         VStack(spacing: 8) {
             // landmark images
-            TabView {
-                ForEach(landmark.photoUrls, id: \.self) { imageUrl in
-                    AsyncImage(url: URL(string: imageUrl)) { image in
-                        image.resizable().scaledToFill()
-                    } placeholder: {
-                        ProgressView()
+            ZStack {
+                TabView {
+                    ForEach(landmark.photoUrls, id: \.self) { imageUrl in
+                        AsyncImage(url: URL(string: imageUrl)) { image in
+                            image.resizable().scaledToFill()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                    }
+                }
+                HStack {
+                    Spacer()
+                    VStack {
+                        Spacer()
+                        AudioPlayerView(attractionID: self.landmark.id, masterPlayer: masterPlayer)
                     }
                 }
             }
@@ -28,7 +44,7 @@ struct LandmarksView: View {
                     Spacer()
                     // distance away
                     // Assuming you have some method to calculate distance
-                    Text("\(calculateDistance(from: landmark)) miles away")
+//                    Text("\(calculateDistance(from: landmark)) miles away")
                 }
                 // second line
                 HStack {
@@ -43,13 +59,15 @@ struct LandmarksView: View {
                 // other details
                 Spacer()
                 HStack {
-                    Spacer()
-                    VStack {
-                        Spacer()
+                   
+                 
+                       
+                    ScrollView {
                         Text(landmark.description)
-                        Spacer()
                     }
-                    Spacer()
+                       
+                   
+                   
                 }
                 .background(Color.gray)
                 .cornerRadius(5)

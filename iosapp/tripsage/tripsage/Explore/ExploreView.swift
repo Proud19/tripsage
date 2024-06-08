@@ -6,6 +6,12 @@
 //
 
 import SwiftUI
+import AVFoundation
+
+struct MasterPlayerState {
+    var isPlaying: Bool
+    var playingPlayer: AudioPlayerViewModel?
+}
 
 struct SwipeArrowView: View {
     @State private var animateUp = false
@@ -32,6 +38,7 @@ struct VerticalSwipeView: View {
     @State private var currentIndex: Int = 0
     @State private var showSwipeArrow = true
     @StateObject var exploreViewModel = ExploreViewModel()
+    var masterPlayer = MasterPlayerState(isPlaying: false)
 
     var body: some View {
         GeometryReader { geometry in
@@ -40,7 +47,7 @@ struct VerticalSwipeView: View {
             }()
             ZStack {
                 ForEach(exploreViewModel.landmarks.indices, id: \.self) { index in
-                    LandmarksView(landmark: exploreViewModel.landmarks[index])
+                    LandmarksView(landmark: exploreViewModel.landmarks[index], masterPlayer: masterPlayer)
                         .frame(width: geometry.size.width, height: geometry.size.height)
                         .offset(y: CGFloat(index - currentIndex) * geometry.size.height)
                         .animation(.spring(), value: currentIndex)

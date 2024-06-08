@@ -47,24 +47,7 @@ struct MainEntryView: View {
         NavigationView {
             Group {
                 if mainEntryViewModel.isLoading {
-                    VStack {
-                        Spacer()
-                        Image(uiImage: sageImage)
-                            .resizable()
-                            .frame(width: 100, height: 100)
-                            .cornerRadius(5.0)
-                            .scaleEffect(pulse ? 1.5 : 1.0)
-                            .animation(
-                                Animation.easeInOut(duration: 2.0)
-                                    .repeatForever(autoreverses: true),
-                                value: pulse
-                            )
-                        Spacer()
-                    }
-                    .frame(maxWidth: .infinity)
-                    .onAppear {
-                        pulse = true
-                    }
+                    SageLoadingView()
                 } else {
                     if mainEntryViewModel.isSignedIn {
                         if mainEntryViewModel.needsOnBoarding {
