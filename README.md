@@ -1,10 +1,25 @@
 # TripSage
 
+
+
 ## Overview
 TripSage is the ultimate travel companion, designed to enhance road trips and explorations by providing location-based insights, route guidance, and enriching travel experiences. The app automatically delivers personalized and contextual information about places users pass through, eliminating the need for manual searches and ensuring a seamless travel experience.
 
 ## Problem Statement
 Travelers often pass by interesting locations without easy access to relevant information. Many resort to cumbersome Wikipedia searches, encountering lengthy or overly technical content. TripSage streamlines this process by delivering relevant, easy-to-understand insights automatically, enhancing the journey without disrupting it.
+
+## 📱 App Screenshots  
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8c053ebd-ca7e-4ffc-9733-8f50432ceffe" width="250">
+  <img src="https://github.com/user-attachments/assets/4e141f6d-e9df-4588-ad61-9d71fb0f52d8" width="250">
+  <img src="https://github.com/user-attachments/assets/f573b696-e398-471a-b698-c7f596dc0dac" width="250">
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f614dddf-ae24-41f7-a90a-127fcc4d9c0c" width="250">
+  <img src="https://github.com/user-attachments/assets/9fefd415-25e6-4c0d-9c81-44c42e9cc211" width="250">
+</p>
 
 ## Key Features
 
